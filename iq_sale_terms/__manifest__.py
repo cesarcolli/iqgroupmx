@@ -2,10 +2,10 @@
     "author": "Cesar Colli, "
               "Odoo Community Association (OCA)",
     "name": "IQ Condiciones comerciales",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "category": "Generic Modules/Base",
     "depends": [
-        'base',
+        'base', 'sale'
     ],
     "summary": "Customización de condiciones comerciales",
     "data": [

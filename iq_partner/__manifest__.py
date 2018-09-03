@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     "author": "Cesar Colli, "
               "Odoo Community Association (OCA)",
