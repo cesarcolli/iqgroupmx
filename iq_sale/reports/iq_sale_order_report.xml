@@ -202,6 +202,34 @@
                         text-align: center;
                     }
 
+                    th.qt_title1{
+                        width: 25px;
+                    }
+
+                    th.qt_title2{
+                        width: 100px;
+                    }
+
+                    th.qt_title3{
+                        width: 90px;
+                    }
+
+                    th.qt_title4{
+                        width: 700px;
+                    }
+
+                    th.qt_title5{
+                        width: 100px;
+                    }
+
+                    th.qt_title6{
+                        width: 100px;
+                    }
+
+                    th.qt_title7{
+                        width: 100px;
+                    }
+
                     b {
                         font-weight: bold;
                     }
@@ -211,6 +239,38 @@
                         font-size: 28px;
                         font-weight: bold;
                         line-height: 2em;
+                    }
+
+                    td.text_hl {
+                        color: #a2cb52;
+                        height: 30px;
+                    }
+
+                    td.text_lb {
+                        padding-left: 30px;
+                    }
+
+                    td.payment_header{
+                        color: #364554;
+                        font-size: 20px;
+                        font-weight: bolder;
+                        height: 30px;
+                        vertical-align: middle;
+                    }
+
+                    table.payment_info{
+                        border: solid 5px #a2cb52;
+                        width: 250px;
+                        height: 220px;
+                    }
+
+                    table.payment_info td{
+                        height: 30px;
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        line-height: 1.8em;
                     }
 
                 </style>
@@ -413,7 +473,7 @@
                                 </tr>
                             </table>
 
-                            <table style="width: 100%">
+                            <table style="width: 100%; line-height: 2em">
                                 <tr>
                                     <td>
                                         <span>
@@ -439,7 +499,34 @@
 
                                             Con casi 10 años en el mercado y la experiencia que esto nos ha brindado podemos manejar cualquier tamaño de
                                             instalación fuera de nuestro territorio, siendo más del 80% de las mismas fuera de Monterrey y la ciudad de México.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
 
+                            <p style="page-break-before:always;"> </p>
+
+                            <table style="width: 100%; line-height: 2em">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">Servicios</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <span>
                                             <h3 class="service_title"><img src="/iq_sale/static/src/img/srv003.png"/> PROPUESTAS PERSONALIZADAS</h3>
 
                                             El departamento de ingeniería de IQ Group ha desarrollado su metodología y establecido estándares para el diseño
@@ -472,6 +559,7 @@
                             </table>
 
                             <p style="page-break-before:always;"> </p>
+
                         </div>
 
                     </t>
@@ -624,34 +712,122 @@
                             
                             <table style="width: 100%">
                                 <tr>
+                                    <td>Tiempo de entrega:</td>
+                                    <td class="text_hl">6 a 8 semanas</td>
+                                </tr>
+                                <tr>
+                                    <td>Tiempo de instalación:</td>
+                                    <td class="text_hl">5 días</td>
+                                </tr>
+                                <tr>
+                                    <td>Equipo:</td>
+                                    <td class="text_hl">50% al ordenar / 50% Previo embarque al cliente</td>
+                                </tr>
+                                <tr>
+                                    <td>Instalación:</td>
+                                    <td class="text_hl">50% Al ordenar / 25% Al calendarizar instalación / 25% al finalizar la instalación</td>
+                                </tr>
+                                <tr>
+                                    <td>Viáticos:</td>
+                                    <td class="text_hl">(no definido)</td>
+                                </tr>
+                                <tr>
+                                    <td>Obra Civil y Eléctrico:</td>
+                                    <td class="text_hl">(no definido)</td>
+                                </tr>
+                                <tr>
+                                    <td>Envío:</td>
+                                    <td class="text_hl">50% Al ordenar / 50% Previo envío al cliente</td>
+                                </tr>
+                            </table>
+
+                            <hr/>
+
+                            <table style="width: 100%">
+                                <tr>
                                     <td>
                                         <span>
-                                            Tiempo de entrega: 6 a 8 semanas
-                                            Tiempo de instalación: 5 días
-                                            Equipo: 50% al ordenar / 50% Previo embarque al cliente
-                                            Instalación: 50% Al ordenar / 25% Al calendarizar instalación / 25% al finalizar la instalación
-                                            Viáticos: (no definido)
-                                            Obra Civil y Eléctrico: (no definido)
-                                            Envío: 50% Al ordenar / 50% Previo envío al cliente
-                                            | PRECIO EN DOLARES AMERICANOS (USD)
-                                            | Cotización valida por 7 días
-                                            | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo
-                                            | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
-                                            entrega
-                                            | Precios sujetos a cambio sin previo aviso
-                                            | Por ser equipo de importación o fabricación especial no se puede cancelar el pedido una vez aceptada esta
-                                            cotización
-                                            CUENTAS BANCARIAS
-                                            Beneficiario: IQ Parking, S.A. de C.V.
-                                            PESOS (MXN) DÓLARES (USD)
-                                            Banco: Banco:
-                                            BANORTE
-                                            BANORTE
-                                            Cuenta: 0681904341 Cuenta: 0854440429
-                                            CLABE: 072580006819043412 CLABE: 072580008544404298
-                                            RFC: IPA100518260 RFC: IPA100518260
-                                            SWIFT:
-                                            MENOMXMT        
+
+                                            <p style="line-height: 2em">
+                                                | PRECIO EN <b>DOLARES AMERICANOS (USD)</b> <br/>
+                                                | Cotización valida por 7 días <br/>
+                                                | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
+                                                | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
+                                                entrega <br/>
+                                                | Precios sujetos a cambio sin previo aviso <br/>
+                                                | Por ser equipo de importación o fabricación especial no se puede cancelar el pedido una vez aceptada esta
+                                                cotización <br/>
+                                            </p>
+
+                                            <hr/>
+
+                                            <h2>CUENTAS BANCARIAS</h2>
+                                            
+                                            <table style="font-size: 18px; margin-bottom: 10px">
+                                                <tr>
+                                                    <td>Beneficiario:</td>
+                                                    <td class="text_hl">IQ Parking, S.A. de C.V.</td>
+                                                </tr>
+                                            </table>
+
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <table class="payment_info" style="margin-right: 20px">
+                                                            <tr>
+                                                                <td class="text_lb payment_header" colspan="2">PESOS (MXN)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Banco:</td>
+                                                                <td class="text_hl">BANORTE</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Cuenta:</td>
+                                                                <td class="text_hl">0854440429</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">CLABE:</td>
+                                                                <td class="text_hl">072580006819043412</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">RFC:</td>
+                                                                <td class="text_hl">IPA100518260</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table class="payment_info">
+                                                            <tr>
+                                                                <td class="text_lb payment_header" colspan="2">DÓLARES (USD)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Banco:</td>
+                                                                <td class="text_hl">BANORTE</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Cuenta:</td>
+                                                                <td class="text_hl">0854440429</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">CLABE:</td>
+                                                                <td class="text_hl">072580006819043412</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">RFC:</td>
+                                                                <td class="text_hl">IPA100518260</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">SWIFT:</td>
+                                                                <td class="text_hl">MENOMXMT</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                                    
                                         </span>
                                     </td>
                                 </tr>
@@ -722,21 +898,24 @@
                                     <td class="border_mid" style="width: 40px"></td>
                                 </tr>
                             </table>
-                            
+
                             <table style="width: 100%">
                                 <tr>
                                     <td>
                                         <span>
-                                            | Sin duda el compromiso más importante es el que tenemos con nuestros clientes, la razón y centro de todas
-                                            nuestras actividades.
-                                            | Por ello estamos comprometidos a:
-                                            | Conocer profundamente las necesidades y expectativas de nuestros clientes y mantener una estrecha
-                                            relación con ellos
-                                            | Cumplir siempre las promesas que les hacemos y vigilar el cumplimiento de éstas
-                                            | Trabajar centrados en ellos, entregandoles un servicio de calidad de excelencia, cercano, agíl y efectivo
-                                            | Garantizar su satisfacción, el diálog y la entrega de información transparente y oportuna de nuestros
-                                            productos y servicios.
-                                            | Evaluar periódicamente su satisfacción.
+                                            Sin duda el compromiso más importante es el que tenemos con nuestros clientes, la razón y centro de todas
+                                            nuestras actividades. <br/>
+                                            Por ello estamos comprometidos a: <br/><br/>
+
+                                            <p style="padding-left: 20px">
+                                                | Conocer profundamente las necesidades y expectativas de nuestros clientes y mantener una estrecha
+                                                relación con ellos <br/>
+                                                | Cumplir siempre las promesas que les hacemos y vigilar el cumplimiento de éstas <br/>
+                                                | Trabajar centrados en ellos, entregandoles un servicio de calidad de excelencia, cercano, agíl y efectivo <br/>
+                                                | Garantizar su satisfacción, el diálog y la entrega de información transparente y oportuna de nuestros
+                                                productos y servicios. <br/>
+                                                | Evaluar periódicamente su satisfacción. <br/><br/>
+                                            </p>
 
                                             Es por eso que a lo largo de estos 7 años contamos con mas de 300 clientes satisfechos con nuestros productos y
                                             servicios, entre los cuales se encuentran:       
@@ -744,7 +923,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <img src="/iq_sale/static/src/img/our_customers.png"/>    
                                     </td>
                                 </tr>
