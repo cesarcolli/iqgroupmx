@@ -1,9 +1,15 @@
 <?xml version="1.0"?>
 <odoo noupdate="1">
-    <record model="ir.sequence" id="seq_res_partner">
-        <field name="name">Partner code</field>
-        <field name="code">res.partner</field>
+    <record model="ir.sequence" id="seq_res_partner_customer">
+        <field name="name">Customer code</field>
+        <field name="code">res.partner.customer</field>
         <field name="prefix">CLP</field>
+        <field name="padding">4</field>
+    </record>
+    <record model="ir.sequence" id="seq_res_partner_supplier">
+        <field name="name">Supplier code</field>
+        <field name="code">res.partner.supplier</field>
+        <field name="prefix">PROV</field>
         <field name="padding">4</field>
     </record>
     <record model="partner.interest" id="iq_interest_accces_vehicule">
