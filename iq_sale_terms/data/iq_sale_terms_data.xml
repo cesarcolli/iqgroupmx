@@ -2,286 +2,286 @@
 <odoo>
     <data noupdate="1">
         <!-- IQ Commercial terms -->
-        <record id="iq_term_te01" model="iq.sale.term">
+        <record id="iq_term_te01" model="sale.term">
             <field name="name">Inmediato</field>
             <field name="code">TE01</field>
             <field name="term_type">delivery</field>
         </record>
-        <record id="iq_term_te02" model="iq.sale.term">
+        <record id="iq_term_te02" model="sale.term">
             <field name="name">10 Días</field>
             <field name="code">TE02</field>
             <field name="term_type">delivery</field>
         </record>
-        <record id="iq_term_te03" model="iq.sale.term">
+        <record id="iq_term_te03" model="sale.term">
             <field name="name">2 a 4 semanas</field>
             <field name="code">TE03</field>
             <field name="term_type">delivery</field>
         </record>
-        <record id="iq_term_te04" model="iq.sale.term">
+        <record id="iq_term_te04" model="sale.term">
             <field name="name">4 a 6 semanas</field>
             <field name="code">TE04</field>
             <field name="term_type">delivery</field>
         </record>
-        <record id="iq_term_te05" model="iq.sale.term">
+        <record id="iq_term_te05" model="sale.term">
             <field name="name">6 a 8 semanas</field>
             <field name="code">TE05</field>
             <field name="term_type">delivery</field>
         </record>
-        <record id="iq_term_te06" model="iq.sale.term">
+        <record id="iq_term_te06" model="sale.term">
             <field name="name">8 a 12 semanas</field>
             <field name="code">TE06</field>
             <field name="term_type">delivery</field>
         </record>
-        <record id="iq_term_ti01" model="iq.sale.term">
+        <record id="iq_term_ti01" model="sale.term">
             <field name="name">1 día</field>
             <field name="code">TI01</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti02" model="iq.sale.term">
+        <record id="iq_term_ti02" model="sale.term">
             <field name="name">2 días</field>
             <field name="code">TI02</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti03" model="iq.sale.term">
+        <record id="iq_term_ti03" model="sale.term">
             <field name="name">3 días</field>
             <field name="code">TI03</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti04" model="iq.sale.term">
+        <record id="iq_term_ti04" model="sale.term">
             <field name="name">4 días</field>
             <field name="code">TI04</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti05" model="iq.sale.term">
+        <record id="iq_term_ti05" model="sale.term">
             <field name="name">5 días</field>
             <field name="code">TI05</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti06" model="iq.sale.term">
+        <record id="iq_term_ti06" model="sale.term">
             <field name="name">6 días</field>
             <field name="code">TI06</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti07" model="iq.sale.term">
+        <record id="iq_term_ti07" model="sale.term">
             <field name="name">7 días</field>
             <field name="code">TI07</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti08" model="iq.sale.term">
+        <record id="iq_term_ti08" model="sale.term">
             <field name="name">8 días</field>
             <field name="code">TI08</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti09" model="iq.sale.term">
+        <record id="iq_term_ti09" model="sale.term">
             <field name="name">9 días</field>
             <field name="code">TI09</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti10" model="iq.sale.term">
+        <record id="iq_term_ti10" model="sale.term">
             <field name="name">10 días</field>
             <field name="code">TI10</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti01s" model="iq.sale.term">
+        <record id="iq_term_ti01s" model="sale.term">
             <field name="name">1 semana</field>
             <field name="code">TI01S</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti02s" model="iq.sale.term">
+        <record id="iq_term_ti02s" model="sale.term">
             <field name="name">2 semanas</field>
             <field name="code">TI02S</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti03s" model="iq.sale.term">
+        <record id="iq_term_ti03s" model="sale.term">
             <field name="name">3 semanas</field>
             <field name="code">TI03S</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_ti04s" model="iq.sale.term">
+        <record id="iq_term_ti04s" model="sale.term">
             <field name="name">4 semanas</field>
             <field name="code">TI04S</field>
             <field name="term_type">installation-time</field>
         </record>
-        <record id="iq_term_eq01" model="iq.sale.term">
+        <record id="iq_term_eq01" model="sale.term">
             <field name="name">50% al ordenar / 25% previo embarque de fábrica / 25% previo envío al cliente</field>
             <field name="code">EQ01</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_eq02" model="iq.sale.term">
+        <record id="iq_term_eq02" model="sale.term">
             <field name="name">50% al ordenar / 50% previo embarque al cliente</field>
             <field name="code">EQ02</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_eq03" model="iq.sale.term">
+        <record id="iq_term_eq03" model="sale.term">
             <field name="name">100% al ordenar</field>
             <field name="code">EQ03</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_eq04" model="iq.sale.term">
+        <record id="iq_term_eq04" model="sale.term">
             <field name="name">40% al ordenar / 30% previo embarque de fábrica / 30% previo envío al cliente</field>
             <field name="code">EQ04</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_eq05" model="iq.sale.term">
+        <record id="iq_term_eq05" model="sale.term">
             <field name="name">Por definir</field>
             <field name="code">EQ05</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_eq06" model="iq.sale.term">
+        <record id="iq_term_eq06" model="sale.term">
             <field name="name">Crédito 15 días</field>
             <field name="code">EQ06</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_eq07" model="iq.sale.term">
+        <record id="iq_term_eq07" model="sale.term">
             <field name="name">Crédito 30 días</field>
             <field name="code">EQ07</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_eq08" model="iq.sale.term">
+        <record id="iq_term_eq08" model="sale.term">
             <field name="name">No aplica</field>
             <field name="code">EQ08</field>
             <field name="term_type">equipment</field>
         </record>
-        <record id="iq_term_in01" model="iq.sale.term">
+        <record id="iq_term_in01" model="sale.term">
             <field name="name">50% al ordenar / 25% al calendarizar instalación / 25% al finalizar instalación</field>
             <field name="code">IN01</field>
             <field name="term_type">installation</field>
         </record>
-        <record id="iq_term_in02" model="iq.sale.term">
+        <record id="iq_term_in02" model="sale.term">
             <field name="name">50% al ordenar / 50% al finalizar instalación</field>
             <field name="code">IN02</field>
             <field name="term_type">installation</field>
         </record>
-        <record id="iq_term_in03" model="iq.sale.term">
+        <record id="iq_term_in03" model="sale.term">
             <field name="name">40% al ordenar / 30% al calendarizar instalación / 30% al finalizar instalación</field>
             <field name="code">IN03</field>
             <field name="term_type">installation</field>
         </record>
-        <record id="iq_term_in04" model="iq.sale.term">
+        <record id="iq_term_in04" model="sale.term">
             <field name="name">Crédito 15 días</field>
             <field name="code">IN04</field>
             <field name="term_type">installation</field>
         </record>
-        <record id="iq_term_in05" model="iq.sale.term">
+        <record id="iq_term_in05" model="sale.term">
             <field name="name">Crédito 30 días</field>
             <field name="code">IN05</field>
             <field name="term_type">installation</field>
         </record>
-        <record id="iq_term_in06" model="iq.sale.term">
+        <record id="iq_term_in06" model="sale.term">
             <field name="name">No aplica</field>
             <field name="code">IN06</field>
             <field name="term_type">installation</field>
         </record>
-        <record id="iq_term_in07" model="iq.sale.term">
+        <record id="iq_term_in07" model="sale.term">
             <field name="name">100% al ordenar</field>
             <field name="code">IN07</field>
             <field name="term_type">installation</field>
         </record>
-        <record id="iq_term_ex01" model="iq.sale.term">
+        <record id="iq_term_ex01" model="sale.term">
             <field name="name">50% al ordenar / 25% al calendarizar instalación / 25% al finalizar instalación</field>
             <field name="code">VI01</field>
             <field name="term_type">expenses</field>
         </record>
-        <record id="iq_term_ex02" model="iq.sale.term">
+        <record id="iq_term_ex02" model="sale.term">
             <field name="name">50% al ordenar / 50% al finalizar instalación</field>
             <field name="code">VI02</field>
             <field name="term_type">expenses</field>
         </record>
-        <record id="iq_term_ex03" model="iq.sale.term">
+        <record id="iq_term_ex03" model="sale.term">
             <field name="name">40% al ordenar / 30% al calendarizar instalación / 30% al finalizar instalación</field>
             <field name="code">VI03</field>
             <field name="term_type">expenses</field>
         </record>
-        <record id="iq_term_ex04" model="iq.sale.term">
+        <record id="iq_term_ex04" model="sale.term">
             <field name="name">Crédito 15 días</field>
             <field name="code">VI04</field>
             <field name="term_type">expenses</field>
         </record>
-        <record id="iq_term_ex05" model="iq.sale.term">
+        <record id="iq_term_ex05" model="sale.term">
             <field name="name">Crédito 30 días</field>
             <field name="code">VI05</field>
             <field name="term_type">expenses</field>
         </record>
-        <record id="iq_term_ex06" model="iq.sale.term">
+        <record id="iq_term_ex06" model="sale.term">
             <field name="name">No aplica</field>
             <field name="code">VI06</field>
             <field name="term_type">expenses</field>
         </record>
-        <record id="iq_term_ex07" model="iq.sale.term">
+        <record id="iq_term_ex07" model="sale.term">
             <field name="name">100% al ordenar</field>
             <field name="code">VI07</field>
             <field name="term_type">expenses</field>
         </record>
-        <record id="iq_term_cw01" model="iq.sale.term">
+        <record id="iq_term_cw01" model="sale.term">
             <field name="name">50% al ordenar / 25% previo embarque de fábrica / 25% al finalizar obra civil y
                 eléctrica
             </field>
             <field name="code">CW01</field>
             <field name="term_type">civil-work</field>
         </record>
-        <record id="iq_term_cw02" model="iq.sale.term">
+        <record id="iq_term_cw02" model="sale.term">
             <field name="name">50% al ordenar / Resto contra estimaciones</field>
             <field name="code">CW02</field>
             <field name="term_type">civil-work</field>
         </record>
-        <record id="iq_term_cw03" model="iq.sale.term">
+        <record id="iq_term_cw03" model="sale.term">
             <field name="name">40% al ordenar / 30% previo embarque de fábrica / 30% al finalizar obra civil y
                 eléctrica
             </field>
             <field name="code">CW03</field>
             <field name="term_type">civil-work</field>
         </record>
-        <record id="iq_term_cw04" model="iq.sale.term">
+        <record id="iq_term_cw04" model="sale.term">
             <field name="name">Por definir</field>
             <field name="code">CW04</field>
             <field name="term_type">civil-work</field>
         </record>
-        <record id="iq_term_cw05" model="iq.sale.term">
+        <record id="iq_term_cw05" model="sale.term">
             <field name="name">Crédito 15 días</field>
             <field name="code">CW05</field>
             <field name="term_type">civil-work</field>
         </record>
-        <record id="iq_term_cw06" model="iq.sale.term">
+        <record id="iq_term_cw06" model="sale.term">
             <field name="name">Crédito 30 días</field>
             <field name="code">CW06</field>
             <field name="term_type">civil-work</field>
         </record>
-        <record id="iq_term_cw07" model="iq.sale.term">
+        <record id="iq_term_cw07" model="sale.term">
             <field name="name">No aplica</field>
             <field name="code">CW07</field>
             <field name="term_type">civil-work</field>
         </record>
-        <record id="iq_term_sh01" model="iq.sale.term">
+        <record id="iq_term_sh01" model="sale.term">
             <field name="name">50% al ordenar / 50% previo envío al cliente</field>
             <field name="code">EN01</field>
             <field name="term_type">shipping</field>
         </record>
-        <record id="iq_term_sh02" model="iq.sale.term">
+        <record id="iq_term_sh02" model="sale.term">
             <field name="name">100% al ordenar</field>
             <field name="code">EN02</field>
             <field name="term_type">shipping</field>
         </record>
-        <record id="iq_term_sh03" model="iq.sale.term">
+        <record id="iq_term_sh03" model="sale.term">
             <field name="name">Por definir</field>
             <field name="code">EN03</field>
             <field name="term_type">shipping</field>
         </record>
-        <record id="iq_term_sh04" model="iq.sale.term">
+        <record id="iq_term_sh04" model="sale.term">
             <field name="name">Cliente recoge</field>
             <field name="code">EN04</field>
             <field name="term_type">shipping</field>
         </record>
-        <record id="iq_term_sh05" model="iq.sale.term">
+        <record id="iq_term_sh05" model="sale.term">
             <field name="name">Crédito 15 días</field>
             <field name="code">EN05</field>
             <field name="term_type">shipping</field>
         </record>
-        <record id="iq_term_sh06" model="iq.sale.term">
+        <record id="iq_term_sh06" model="sale.term">
             <field name="name">Crédito 30 días</field>
             <field name="code">EN06</field>
             <field name="term_type">shipping</field>
         </record>
-        <record id="iq_term_sh07" model="iq.sale.term">
+        <record id="iq_term_sh07" model="sale.term">
             <field name="name">No aplica</field>
             <field name="code">EN07</field>
             <field name="term_type">shipping</field>

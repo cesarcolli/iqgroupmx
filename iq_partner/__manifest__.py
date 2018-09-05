@@ -1,13 +1,13 @@
+# -*- coding: utf-8 -*-
 {
-    "author": "Cesar Colli, "
-              "Odoo Community Association (OCA)",
-    "name": "IQ Clientes",
-    "version": "1.0.0",
+    "author": "Cesar Colli",
+    "name": "IQ Contactos",
+    "version": "1.0.4",
     "category": "Generic Modules/Base",
     "depends": [
-        'base',
+        'base'
     ],
-    "summary": "Customización de Clientes",
+    "summary": "Customización de Contactos",
     "data": [
         'data/partner_sequence.xml',
         'views/partner_view.xml',
