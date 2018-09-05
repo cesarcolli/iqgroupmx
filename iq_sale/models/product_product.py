@@ -21,3 +21,9 @@ class ProductTemplate(models.Model):
             'url': '/web/pdf_viewer/%s/%s' % (self.tech_file_id.id, self.tech_file_id.name),
             'target': 'new'
         }
+
+    def tech_file_url(self):
+
+        url = self.env['ir.config_parameter'].get_param('web.base.url', '').strip()
+
+        return '%s/web/pdf_viewer/%s/%s' % (url, self.tech_file_id.id, self.tech_file_id.name) if self.tech_file_id.id else False

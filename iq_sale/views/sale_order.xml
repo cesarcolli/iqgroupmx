@@ -20,6 +20,10 @@
                     </group>
                 </xpath>
 
+                <xpath expr="//tree//field[@name='sequence']" position="after">
+                        <field name="line_num" readonly="1"/>
+                </xpath>
+
             </field>
 
         </record>
