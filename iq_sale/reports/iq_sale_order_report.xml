@@ -320,7 +320,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="header_title">Control de Acceso</div>
+                                    <t t-if="o.quotation_title">
+                                        <div class="header_title"><t t-esc="o.quotation_title"/></div>
+                                    </t>
                                 </td>
                             </tr>
                             <tr>
@@ -333,16 +335,18 @@
                                     </table>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="padding-top: 15px">
-                                    <table class="tx_center">
-                                        <tr>
-                                            <td class="field_label tx_bolder">Contacto:</td>
-                                            <td class="field_text tx_bolder">Arq. Jocelyn Somuano</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
+                            <t t-if="o.customer_contact_id.name">
+                                <tr>
+                                    <td style="padding-top: 15px">
+                                        <table class="tx_center">
+                                            <tr>
+                                                <td class="field_label tx_bolder">Contacto:</td>
+                                                <td class="field_text tx_bolder"><t t-esc="o.customer_contact_id.name"/></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </t>
                             <tr>
                                 <td style="padding-top: 15px">
                                     <table class="tx_center">
@@ -621,7 +625,7 @@
                             </tr>
                             <tr>
                                 <td class="quotation_label">Contacto:</td>
-                                <td class="quotation_text">Arq. Jocelyn Somuano</td>
+                                <td class="quotation_text"><t t-esc="o.customer_contact_id.name or '(no definido)'"/></td>
                                 <td class="quotation_label">Asesor comercial:</td>
                                 <td class="quotation_text"><t t-esc="o.user_id.name"/></td>
                             </tr>

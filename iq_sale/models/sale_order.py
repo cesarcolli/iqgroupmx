@@ -25,6 +25,15 @@ class SaleOrder(models.Model):
         string='Nuestros Clientes',
         default=True
     )
+    quotation_title = fields.Char(
+        string='Titulo',
+        size=80
+    )
+    customer_contact_id = fields.Many2one(
+        string='Contacto',
+        comodel_name='res.partner',
+        domain="[('parent_id', '=', partner_id)]"
+    )
 
     def quotation_page_index(self):
 
