@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "IQ Sale",
+    'name': "IQ INVENTORY",
 
-    'summary': """IQ company sales functionality""",
+    'summary': """IQ company inventory functionality""",
 
     'description': """
 
@@ -16,14 +16,12 @@
     'version': '1.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management', 'sale_stock'],
+    'depends': ['sale_stock'],
 
     # always loaded
     'data': [
-        'reports/iq_sale_order_main.xml',
-        'reports/iq_sale_order_report.xml',
-        'wizards/product_tech_file.xml',
-        'views/sale_order.xml',
-        'views/product_template.xml',
+        'reports/iq_stock_picking_main.xml',
+        'reports/iq_stock_picking_move.xml',
+        'reports/iq_stock_picking_delivery.xml',
     ]
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="iq_stock_picking_header">
+
+            <style>
+                img.logo {
+                    width: 110px;
+                    height: 90px;
+                }
+
+                table.header_table {
+                    width: 100%;
+                }
+
+                table.header_table .header_title {
+                    color: #364554;
+                    font-size: 25px;
+                    font-weight: bold;
+                    text-align: center;
+                    width: 60%;
+                }
+
+                .header_text{
+                    vertical-align: top;
+                }
+            </style>
+            
+            <table class="header_table">
+                <tr>
+                    <td rowspan="3" style="width: 20%"><img class="logo" src="/iq_inventory/static/src/img/logo_header.png"/></td>
+                    <td rowspan="3" class="header_title"><t t-esc="FORMAT_TITLE"/></td>
+                    <td class="header_text" style="width: 20%"><span t-if="o.origin"> No. pedido: <t t-esc="o.origin"/> </span></td>
+                </tr>
+                <tr>
+                    <td class="header_text">Fecha: <span t-field="o.create_date" t-options="{&quot;widget&quot;: &quot;date&quot;}"/></td>
+                </tr>
+                <tr>
+                    <td class="header_text" t-if="o.sale_id">Vendedor: <span t-field="o.sale_id.user_id"/></td>
+                </tr>
+            </table>
+
+        </template>
+
+        <template id="iq_stock_picking_footer">
+
+            <style>
+
+                div.footer_page_text {
+                    text-align: right;
+                    color: #364554;
+                    font-size: 20px;
+                    font-weight: bold;
+                    padding-top: 70px;
+                }
+
+            </style>
+            
+            <div class="footer_page_text">Página <span class="page"></span></div>
+
+        </template>
+
+    </data>
+</odoo>

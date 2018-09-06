@@ -156,6 +156,10 @@
                         color: #FFF;
                     }
 
+                    tr.quotation_header th {
+                        text-align: center;
+                    }
+
                     tr.odd {
                         background: #e1e2e6;
                     }
@@ -169,37 +173,83 @@
                     }
 
                     td.qt_column1{
+                        vertical-align: middle;
                         border: solid 1px #a1a1a1;
                         text-align: right;
                     }
 
                     td.qt_column2{
+                        vertical-align: middle;
                         border: solid 1px #a1a1a1;
                     }
 
                     td.qt_column3{
+                        vertical-align: middle;
                         border: solid 1px #a1a1a1;
+                        padding-top: 2px;
+                        padding-left: 2px;
                     }
 
                     td.qt_column4{
+                        vertical-align: middle;
                         border: solid 1px #a1a1a1;
                         text-align: center;
-                        vertical-align: text-top;
                     }
 
                     td.qt_column5{
+                        vertical-align: middle;
                         border: solid 1px #a1a1a1;
                         text-align: center;
                     }
 
                     td.qt_column6{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        text-align: center;
+                    }
+
+                    td.qt_column7{
+                        vertical-align: middle;
                         border: solid 1px #a1a1a1;
                         text-align: right;
                     }
 
-                    td.qt_column7{
+                    td.qt_column8{
+                        vertical-align: middle;
                         border: solid 1px #a1a1a1;
                         text-align: center;
+                    }
+
+                    th.qt_title1{
+                        width: 25px;
+                    }
+
+                    th.qt_title2{
+                        width: 100px;
+                    }
+
+                    th.qt_title3{
+                        width: 90px;
+                    }
+
+                    th.qt_title4{
+                        width: 90px;
+                    }
+
+                    th.qt_title5{
+                        width: 700px;
+                    }
+
+                    th.qt_title6{
+                        width: 100px;
+                    }
+
+                    th.qt_title7{
+                        width: 100px;
+                    }
+
+                    th.qt_title8{
+                        width: 100px;
                     }
 
                     b {
@@ -211,6 +261,38 @@
                         font-size: 28px;
                         font-weight: bold;
                         line-height: 2em;
+                    }
+
+                    td.text_hl {
+                        color: #a2cb52;
+                        height: 30px;
+                    }
+
+                    td.text_lb {
+                        padding-left: 30px;
+                    }
+
+                    td.payment_header{
+                        color: #364554;
+                        font-size: 20px;
+                        font-weight: bolder;
+                        height: 30px;
+                        vertical-align: middle;
+                    }
+
+                    table.payment_info{
+                        border: solid 5px #a2cb52;
+                        width: 250px;
+                        height: 220px;
+                    }
+
+                    table.payment_info td{
+                        height: 30px;
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        line-height: 1.8em;
                     }
 
                 </style>
@@ -233,12 +315,14 @@
                             <tr>
                                 <td class="wrapper">
                                     <div class="header_back"></div>
-                                    <div class="header_date">29/06/2018</div>
+                                    <div class="header_date" t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="header_title">Control de Acceso</div>
+                                    <t t-if="o.quotation_title">
+                                        <div class="header_title"><t t-esc="o.quotation_title"/></div>
+                                    </t>
                                 </td>
                             </tr>
                             <tr>
@@ -246,27 +330,29 @@
                                     <table class="tx_center">
                                         <tr>
                                             <td class="field_label tx_bolder">Empresa:</td>
-                                            <td class="field_text tx_bolder">Emprenurban</td>
+                                            <td class="field_text tx_bolder"><t t-esc="o.partner_id.name"/></td>
                                         </tr>
                                     </table>
                                 </td>
                             </tr>
-                            <tr>
-                                <td style="padding-top: 15px">
-                                    <table class="tx_center">
-                                        <tr>
-                                            <td class="field_label tx_bolder">Contacto:</td>
-                                            <td class="field_text tx_bolder">Arq. Jocelyn Somuano</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
+                            <t t-if="o.customer_contact_id.name">
+                                <tr>
+                                    <td style="padding-top: 15px">
+                                        <table class="tx_center">
+                                            <tr>
+                                                <td class="field_label tx_bolder">Contacto:</td>
+                                                <td class="field_text tx_bolder"><t t-esc="o.customer_contact_id.name"/></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </t>
                             <tr>
                                 <td style="padding-top: 15px">
                                     <table class="tx_center">
                                         <tr>
                                             <td class="field_label tx_bolder">Asesor Comercial:</td>
-                                            <td class="field_text tx_bolder">Berenice Garza</td>
+                                            <td class="field_text tx_bolder"><t t-esc="o.user_id.name"/></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -289,7 +375,7 @@
                         <br/>
                         <br/>
 
-                        <div class="footer_numdoc">Cotización 13033</div>
+                        <div class="footer_numdoc">Cotización <t t-esc="o.name"/></div>
 
                         <p style="page-break-before:always;"> </p>
                     </div>
@@ -318,15 +404,14 @@
                         <table style="width: 100%">
                             <tr>
                                 <td class="doc_index">
-                                    1. Portada. <br/>
-                                    2. Índice. <br/>
-                                    3. Quiénes somos. <br/>
-                                    4. Servicios <br/>
-                                    5. Propuesta económica <br/>
-                                    6. Condiciones comerciales <br/>
-                                    7. Información adicional <br/>
-                                    8. Nuestros Clientes <br/>
-                                    9. Galería
+
+                                    1. Portada<br/>
+                                    2. Índice<br/>
+
+                                    <t t-foreach="o.quotation_page_index()" t-as="iline">
+                                        <t t-esc="'%s. %s' % (iline[0], iline[1])"/> <br/>
+                                    </t>
+
                                 </td>
                             </tr>
                         </table>
@@ -413,7 +498,7 @@
                                 </tr>
                             </table>
 
-                            <table style="width: 100%">
+                            <table style="width: 100%; line-height: 2em">
                                 <tr>
                                     <td>
                                         <span>
@@ -439,7 +524,34 @@
 
                                             Con casi 10 años en el mercado y la experiencia que esto nos ha brindado podemos manejar cualquier tamaño de
                                             instalación fuera de nuestro territorio, siendo más del 80% de las mismas fuera de Monterrey y la ciudad de México.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
 
+                            <p style="page-break-before:always;"> </p>
+
+                            <table style="width: 100%; line-height: 2em">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">Servicios</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <span>
                                             <h3 class="service_title"><img src="/iq_sale/static/src/img/srv003.png"/> PROPUESTAS PERSONALIZADAS</h3>
 
                                             El departamento de ingeniería de IQ Group ha desarrollado su metodología y establecido estándares para el diseño
@@ -472,6 +584,7 @@
                             </table>
 
                             <p style="page-break-before:always;"> </p>
+
                         </div>
 
                     </t>
@@ -500,21 +613,21 @@
                         <table style="width: 80%; height: 70px;">
                             <tr>
                                 <td class="quotation_label">Empresa:</td>
-                                <td class="quotation_text">Emprenurban</td>
+                                <td class="quotation_text"><t t-esc="o.partner_id.name"/></td>
                                 <td class="quotation_label">Folio:</td>
-                                <td class="quotation_text">13033</td>
+                                <td class="quotation_text"><t t-esc="o.name"/></td>
                             </tr>
                             <tr>
                                 <td class="quotation_label">Ciudad y Estado:</td>
-                                <td class="quotation_text">Benito Juárez, Distrito Federal</td>
+                                <td class="quotation_text"><t t-esc="o.customer_location()"/></td>
                                 <td class="quotation_label">Fecha:</td>
-                                <td class="quotation_text">29/06/2018</td>
+                                <td class="quotation_text"><div t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"></div></td>
                             </tr>
                             <tr>
                                 <td class="quotation_label">Contacto:</td>
-                                <td class="quotation_text">Arq. Jocelyn Somuano</td>
+                                <td class="quotation_text"><t t-esc="o.customer_contact_id.name or '(no definido)'"/></td>
                                 <td class="quotation_label">Asesor comercial:</td>
-                                <td class="quotation_text">Berenice Garza</td>
+                                <td class="quotation_text"><t t-esc="o.user_id.name"/></td>
                             </tr>
                         </table>
 
@@ -523,76 +636,62 @@
 
                         <table style="width: 100%">
                             <tr class="quotation_header">
-                                <th>#</th>
-                                <th>Código</th>
-                                <th>Imagen Producto</th>
-                                <th>Producto/Concepto</th>
-                                <th>Cantidad</th>
-                                <th>P.lista(USD)</th>
-                                <th>Subtotal</th>
+                                <th class="qt_title1">#</th>
+                                <th class="qt_title2">Código</th>
+                                <th class="qt_title3">Imagen Producto</th>
+                                <th class="qt_title4">Ficha técnica</th>
+                                <th class="qt_title5">Producto/Concepto</th>
+                                <th class="qt_title6">Cantidad</th>
+                                <th class="qt_title7">P.lista(USD)</th>
+                                <th class="qt_title8">Subtotal</th>
                             </tr>
+
+                            <t t-foreach="o.order_line" t-as="line">
+                                <tr style="height: 104px" t-att-class="'odd' if line.id % 2 == 0 else ''">
+                                    <td class="qt_column1"><t t-esc="line.line_num"/></td>
+                                    <td class="qt_column2"><t t-esc="line.product_id.default_code"/></td>
+                                    <td class="qt_column3">
+                                        <t t-if="line.product_id.image_medium">
+                                            <img 
+                                                style="width: 100px; height: 100px;" 
+                                                t-attf-src="data:image/*;base64,{{line.product_id.image_medium}}" 
+                                            />
+                                        </t>
+                                    </td>
+                                    <td class="qt_column4">
+                                        <t t-set="file_url" t-value="line.product_id.product_tmpl_id.tech_file_url()"/>
+
+                                        <t t-if="file_url">
+                                            <a target="_blank" t-att-href="file_url">
+                                                <i class="fa fa-book fa-2x" style="color: #364554"/>
+                                            </a>
+                                        </t>
+                                    </td>
+                                    <td class="qt_column5">
+                                        <t t-foreach="line.name.split('\n')" t-as="name_line">
+                                            <t t-esc="name_line"/> <br/>
+                                        </t>
+                                    </td>
+                                    <td class="qt_column6"><span t-field="line.product_uom_qty"/></td>
+                                    <td class="qt_column7"><span t-field="line.price_unit"/></td>
+                                    <td class="qt_column8"><span t-field="line.price_subtotal"/></td>
+                                </tr>
+                            </t>
+
                             <tr>
-                                <td class="qt_column1">1</td>
-                                <td class="qt_column2">QTN100D</td>
-                                <td class="qt_column3" style="width: 10px">
-                                    <img src="/iq_sale/static/src/img/prod1.png"/>
-                                </td>
-                                <td class="qt_column4">ONYX <br/>
-                    Torniquete óptico doble abatible de cristal en acero inoxidable.</td>
-                                <td class="qt_column5">2</td>
-                                <td class="qt_column6">$9,800.00</td>
-                                <td class="qt_column7">$19,600.00</td>
-                            </tr>
-                            <tr class="odd">
-                                <td>2</td>
-                                <td>QTN100D</td>
-                                <td>
-                                    <img src="/iq_sale/static/src/img/prod2.png"/>
-                                </td>
-                                <td>ONYX <br/>
-                    Torniquete óptico doble abatible de cristal en acero inoxidable.</td>
-                                <td>2</td>
-                                <td>$9,800.00</td>
-                                <td>$19,600.00</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>QTN100D</td>
-                                <td>
-                                    <img src="/iq_sale/static/src/img/prod3.png"/>
-                                </td>
-                                <td>ONYX <br/>
-                    Torniquete óptico doble abatible de cristal en acero inoxidable.</td>
-                                <td>2</td>
-                                <td>$9,800.00</td>
-                                <td>$19,600.00</td>
-                            </tr>
-                            <tr class="odd">
-                                <td>4</td>
-                                <td>QTN100D</td>
-                                <td>
-                                    <img src="/iq_sale/static/src/img/prod4.png"/>
-                                </td>
-                                <td>ONYX <br/>
-                    Torniquete óptico doble abatible de cristal en acero inoxidable.</td>
-                                <td>2</td>
-                                <td>$9,800.00</td>
-                                <td>$19,600.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" rowspan="3" style="text-align: center;">
+                                <td colspan="5" rowspan="3" style="text-align: center;">
                                     <span class="quotation_title">Precio en dolares americanos (<b>USD</b>)</span>
                                 </td>
                                 <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b>USD</b> ):</td>
-                                <td class="qt_column7">$42,765.00</td>
+                                <td class="qt_column7"><span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b>USD</b> ):</td>
-                                <td class="qt_column7">$6,842.40</td>
+                                <td class="qt_column7"><span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
                                 <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b>USD</b> ):</td>
-                                <td class="qt_column7">$49,607.40</td>
+                                <td class="qt_column7"><span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                         </table>
 
@@ -624,34 +723,122 @@
                             
                             <table style="width: 100%">
                                 <tr>
+                                    <td>Tiempo de entrega:</td>
+                                    <td class="text_hl">6 a 8 semanas</td>
+                                </tr>
+                                <tr>
+                                    <td>Tiempo de instalación:</td>
+                                    <td class="text_hl">5 días</td>
+                                </tr>
+                                <tr>
+                                    <td>Equipo:</td>
+                                    <td class="text_hl">50% al ordenar / 50% Previo embarque al cliente</td>
+                                </tr>
+                                <tr>
+                                    <td>Instalación:</td>
+                                    <td class="text_hl">50% Al ordenar / 25% Al calendarizar instalación / 25% al finalizar la instalación</td>
+                                </tr>
+                                <tr>
+                                    <td>Viáticos:</td>
+                                    <td class="text_hl">(no definido)</td>
+                                </tr>
+                                <tr>
+                                    <td>Obra Civil y Eléctrico:</td>
+                                    <td class="text_hl">(no definido)</td>
+                                </tr>
+                                <tr>
+                                    <td>Envío:</td>
+                                    <td class="text_hl">50% Al ordenar / 50% Previo envío al cliente</td>
+                                </tr>
+                            </table>
+
+                            <hr/>
+
+                            <table style="width: 100%">
+                                <tr>
                                     <td>
                                         <span>
-                                            Tiempo de entrega: 6 a 8 semanas
-                                            Tiempo de instalación: 5 días
-                                            Equipo: 50% al ordenar / 50% Previo embarque al cliente
-                                            Instalación: 50% Al ordenar / 25% Al calendarizar instalación / 25% al finalizar la instalación
-                                            Viáticos: (no definido)
-                                            Obra Civil y Eléctrico: (no definido)
-                                            Envío: 50% Al ordenar / 50% Previo envío al cliente
-                                            | PRECIO EN DOLARES AMERICANOS (USD)
-                                            | Cotización valida por 7 días
-                                            | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo
-                                            | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
-                                            entrega
-                                            | Precios sujetos a cambio sin previo aviso
-                                            | Por ser equipo de importación o fabricación especial no se puede cancelar el pedido una vez aceptada esta
-                                            cotización
-                                            CUENTAS BANCARIAS
-                                            Beneficiario: IQ Parking, S.A. de C.V.
-                                            PESOS (MXN) DÓLARES (USD)
-                                            Banco: Banco:
-                                            BANORTE
-                                            BANORTE
-                                            Cuenta: 0681904341 Cuenta: 0854440429
-                                            CLABE: 072580006819043412 CLABE: 072580008544404298
-                                            RFC: IPA100518260 RFC: IPA100518260
-                                            SWIFT:
-                                            MENOMXMT        
+
+                                            <p style="line-height: 2em">
+                                                | PRECIO EN <b>DOLARES AMERICANOS (USD)</b> <br/>
+                                                | Cotización valida por 7 días <br/>
+                                                | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
+                                                | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
+                                                entrega <br/>
+                                                | Precios sujetos a cambio sin previo aviso <br/>
+                                                | Por ser equipo de importación o fabricación especial no se puede cancelar el pedido una vez aceptada esta
+                                                cotización <br/>
+                                            </p>
+
+                                            <hr/>
+
+                                            <h2>CUENTAS BANCARIAS</h2>
+                                            
+                                            <table style="font-size: 18px; margin-bottom: 10px">
+                                                <tr>
+                                                    <td>Beneficiario:</td>
+                                                    <td class="text_hl"> <![CDATA[&nbsp;]]> IQ Parking, S.A. de C.V.</td>
+                                                </tr>
+                                            </table>
+
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <table class="payment_info" style="margin-right: 20px">
+                                                            <tr>
+                                                                <td class="text_lb payment_header" colspan="2">PESOS (MXN)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Banco:</td>
+                                                                <td class="text_hl">BANORTE</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Cuenta:</td>
+                                                                <td class="text_hl">0854440429</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">CLABE:</td>
+                                                                <td class="text_hl">072580006819043412</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">RFC:</td>
+                                                                <td class="text_hl">IPA100518260</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table class="payment_info">
+                                                            <tr>
+                                                                <td class="text_lb payment_header" colspan="2">DÓLARES (USD)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Banco:</td>
+                                                                <td class="text_hl">BANORTE</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Cuenta:</td>
+                                                                <td class="text_hl">0854440429</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">CLABE:</td>
+                                                                <td class="text_hl">072580006819043412</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">RFC:</td>
+                                                                <td class="text_hl">IPA100518260</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">SWIFT:</td>
+                                                                <td class="text_hl">MENOMXMT</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                                    
                                         </span>
                                     </td>
                                 </tr>
@@ -722,21 +909,24 @@
                                     <td class="border_mid" style="width: 40px"></td>
                                 </tr>
                             </table>
-                            
+
                             <table style="width: 100%">
                                 <tr>
                                     <td>
                                         <span>
-                                            | Sin duda el compromiso más importante es el que tenemos con nuestros clientes, la razón y centro de todas
-                                            nuestras actividades.
-                                            | Por ello estamos comprometidos a:
-                                            | Conocer profundamente las necesidades y expectativas de nuestros clientes y mantener una estrecha
-                                            relación con ellos
-                                            | Cumplir siempre las promesas que les hacemos y vigilar el cumplimiento de éstas
-                                            | Trabajar centrados en ellos, entregandoles un servicio de calidad de excelencia, cercano, agíl y efectivo
-                                            | Garantizar su satisfacción, el diálog y la entrega de información transparente y oportuna de nuestros
-                                            productos y servicios.
-                                            | Evaluar periódicamente su satisfacción.
+                                            Sin duda el compromiso más importante es el que tenemos con nuestros clientes, la razón y centro de todas
+                                            nuestras actividades. <br/>
+                                            Por ello estamos comprometidos a: <br/><br/>
+
+                                            <p style="padding-left: 20px">
+                                                | Conocer profundamente las necesidades y expectativas de nuestros clientes y mantener una estrecha
+                                                relación con ellos <br/>
+                                                | Cumplir siempre las promesas que les hacemos y vigilar el cumplimiento de éstas <br/>
+                                                | Trabajar centrados en ellos, entregandoles un servicio de calidad de excelencia, cercano, agíl y efectivo <br/>
+                                                | Garantizar su satisfacción, el diálog y la entrega de información transparente y oportuna de nuestros
+                                                productos y servicios. <br/>
+                                                | Evaluar periódicamente su satisfacción. <br/><br/>
+                                            </p>
 
                                             Es por eso que a lo largo de estos 7 años contamos con mas de 300 clientes satisfechos con nuestros productos y
                                             servicios, entre los cuales se encuentran:       
@@ -744,7 +934,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <img src="/iq_sale/static/src/img/our_customers.png"/>    
                                     </td>
                                 </tr>

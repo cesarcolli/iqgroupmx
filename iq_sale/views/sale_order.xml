@@ -12,12 +12,18 @@
 
                 <xpath expr="//page[last()]/group" position="inside">
                     <group string="Cotización">
+                        <field name="quotation_title"/>
+                        <field name="customer_contact_id"/>
                         <field name="quotation_sec_about"/>
                         <field name="quotation_sec_services"/>
                         <field name="quotation_sec_conditions"/>
                         <field name="quotation_sec_info"/>
                         <field name="quotation_sec_customers"/>
                     </group>
+                </xpath>
+
+                <xpath expr="//tree//field[@name='sequence']" position="after">
+                        <field name="line_num" readonly="1"/>
                 </xpath>
 
             </field>
