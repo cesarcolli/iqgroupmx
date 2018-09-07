@@ -719,34 +719,48 @@
                             </table>
                             
                             <table style="width: 100%">
+                                <t t-if="o.iq_delivery_term_id">
                                 <tr>
                                     <td>Tiempo de entrega:</td>
-                                    <td class="text_hl">6 a 8 semanas</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_delivery_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_installation_time_term_id">
                                 <tr>
                                     <td>Tiempo de instalación:</td>
-                                    <td class="text_hl">5 días</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_installation_time_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_equipment_term_id">
                                 <tr>
                                     <td>Equipo:</td>
-                                    <td class="text_hl">50% al ordenar / 50% Previo embarque al cliente</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_equipment_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_installation_term_id">
                                 <tr>
                                     <td>Instalación:</td>
-                                    <td class="text_hl">50% Al ordenar / 25% Al calendarizar instalación / 25% al finalizar la instalación</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_installation_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_expenses_term_id">
                                 <tr>
                                     <td>Viáticos:</td>
-                                    <td class="text_hl">(no definido)</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_expenses_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_civil_work_term_id">
                                 <tr>
                                     <td>Obra Civil y Eléctrico:</td>
-                                    <td class="text_hl">(no definido)</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_civil_work_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_shipping_term_id">
                                 <tr>
                                     <td>Envío:</td>
-                                    <td class="text_hl">50% Al ordenar / 50% Previo envío al cliente</td>
+                                    <td class="text_hl"><t t-esc="o.iq_shipping_term_id.name"/></td>
                                 </tr>
+                                </t>
                             </table>
 
                             <hr/>
