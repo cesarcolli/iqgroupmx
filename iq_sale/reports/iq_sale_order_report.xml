@@ -587,6 +587,8 @@
                     <!-- QUOTATION -->
 
                     <div class="page">
+
+                        <t t-set="currency" t-value="o.pricelist_id.currency_id"/>
                         
                         <table style="width: 100%">
                             <tr>
@@ -675,17 +677,17 @@
 
                             <tr>
                                 <td colspan="5" rowspan="3" style="text-align: center;">
-                                    <span class="quotation_title">Precio en dolares americanos (<b>USD</b>)</span>
+                                    <span class="quotation_title">PRECIO EN <t t-esc="currency.currency_unit_label.upper()"/> (<b t-esc="currency.name"></b>)</span>
                                 </td>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b>USD</b> ):</td>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b>USD</b> ):</td>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b>USD</b> ):</td>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                         </table>
@@ -755,7 +757,7 @@
                                         <span>
 
                                             <p style="line-height: 2em">
-                                                | PRECIO EN <b>DOLARES AMERICANOS (USD)</b> <br/>
+                                                | PRECIO EN <b t-esc="'%s (%s)' % (currency.currency_unit_label.upper(), currency.name)" ></b> <br/>
                                                 | Cotización valida por 7 días <br/>
                                                 | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
                                                 | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
