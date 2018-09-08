@@ -758,7 +758,9 @@
 
                                             <p style="line-height: 2em">
                                                 | PRECIO EN <b t-esc="'%s (%s)' % (currency.currency_unit_label.upper(), currency.name)" ></b> <br/>
-                                                | Cotización valida por 7 días <br/>
+                                                <t t-if="o.validity_date">
+                                                    | Cotización valida hasta: <span t-field="o.validity_date" t-options="{&quot;widget&quot;: &quot;date&quot;}" /> <br/>
+                                                </t>
                                                 | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
                                                 | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
                                                 entrega <br/>
