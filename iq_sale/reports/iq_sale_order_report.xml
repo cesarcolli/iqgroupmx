@@ -369,11 +369,6 @@
                         <br/>
                         <br/>
                         <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
 
                         <div class="footer_numdoc">Cotización <t t-esc="o.name"/></div>
 
