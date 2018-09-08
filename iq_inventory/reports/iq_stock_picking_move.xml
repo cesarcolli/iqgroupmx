@@ -167,15 +167,15 @@
                                 <th>Calle</th>
                                 <td><span t-field="customer.street"/></td>
                             </tr>
-                            <tr t-if="customer.street_number">
+                            <tr t-if="customer.check_attr('street_number')">
                                 <th>N° ext.:</th>
                                 <td><span t-field="customer.street_number"/></td>
                             </tr>
-                            <tr t-if="customer.street_number2">
+                            <tr t-if="customer.check_attr('street_number2')">
                                 <th>N° int.:</th>
                                 <td><span t-field="customer.street_number2"/></td>
                             </tr>
-                            <tr t-if="customer.l10n_mx_edi_colony">
+                            <tr t-if="customer.check_attr('l10n_mx_edi_colony')">
                                 <th>Colonia:</th>
                                 <td><span t-field="customer.l10n_mx_edi_colony"/></td>
                             </tr>
