@@ -639,7 +639,7 @@
                                 <th class="qt_title4">Ficha técnica</th>
                                 <th class="qt_title5">Producto/Concepto</th>
                                 <th class="qt_title6">Cantidad</th>
-                                <th class="qt_title7">P.lista(USD)</th>
+                                <th class="qt_title7">P.lista</th>
                                 <th class="qt_title8">Subtotal</th>
                             </tr>
 
