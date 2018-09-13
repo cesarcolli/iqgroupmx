@@ -369,11 +369,6 @@
                         <br/>
                         <br/>
                         <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
 
                         <div class="footer_numdoc">Cotización <t t-esc="o.name"/></div>
 
@@ -592,6 +587,8 @@
                     <!-- QUOTATION -->
 
                     <div class="page">
+
+                        <t t-set="currency" t-value="o.pricelist_id.currency_id"/>
                         
                         <table style="width: 100%">
                             <tr>
@@ -642,7 +639,7 @@
                                 <th class="qt_title4">Ficha técnica</th>
                                 <th class="qt_title5">Producto/Concepto</th>
                                 <th class="qt_title6">Cantidad</th>
-                                <th class="qt_title7">P.lista(USD)</th>
+                                <th class="qt_title7">P.lista</th>
                                 <th class="qt_title8">Subtotal</th>
                             </tr>
 
@@ -680,17 +677,17 @@
 
                             <tr>
                                 <td colspan="5" rowspan="3" style="text-align: center;">
-                                    <span class="quotation_title">Precio en dolares americanos (<b>USD</b>)</span>
+                                    <span class="quotation_title">PRECIO EN <t t-esc="currency.currency_unit_label.upper()"/> (<b t-esc="currency.name"></b>)</span>
                                 </td>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b>USD</b> ):</td>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b>USD</b> ):</td>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b>USD</b> ):</td>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                         </table>
@@ -722,34 +719,48 @@
                             </table>
                             
                             <table style="width: 100%">
+                                <t t-if="o.iq_delivery_term_id">
                                 <tr>
                                     <td>Tiempo de entrega:</td>
-                                    <td class="text_hl">6 a 8 semanas</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_delivery_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_installation_time_term_id">
                                 <tr>
                                     <td>Tiempo de instalación:</td>
-                                    <td class="text_hl">5 días</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_installation_time_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_equipment_term_id">
                                 <tr>
                                     <td>Equipo:</td>
-                                    <td class="text_hl">50% al ordenar / 50% Previo embarque al cliente</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_equipment_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_installation_term_id">
                                 <tr>
                                     <td>Instalación:</td>
-                                    <td class="text_hl">50% Al ordenar / 25% Al calendarizar instalación / 25% al finalizar la instalación</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_installation_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_expenses_term_id">
                                 <tr>
                                     <td>Viáticos:</td>
-                                    <td class="text_hl">(no definido)</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_expenses_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_civil_work_term_id">
                                 <tr>
                                     <td>Obra Civil y Eléctrico:</td>
-                                    <td class="text_hl">(no definido)</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_civil_work_term_id.name"/></td>
                                 </tr>
+                                </t>
+                                <t t-if="o.iq_shipping_term_id">
                                 <tr>
                                     <td>Envío:</td>
-                                    <td class="text_hl">50% Al ordenar / 50% Previo envío al cliente</td>
+                                    <td class="text_hl"><t t-esc="o.iq_shipping_term_id.name"/></td>
                                 </tr>
+                                </t>
                             </table>
 
                             <hr/>
@@ -760,8 +771,10 @@
                                         <span>
 
                                             <p style="line-height: 2em">
-                                                | PRECIO EN <b>DOLARES AMERICANOS (USD)</b> <br/>
-                                                | Cotización valida por 7 días <br/>
+                                                | PRECIO EN <b t-esc="'%s (%s)' % (currency.currency_unit_label.upper(), currency.name)" ></b> <br/>
+                                                <t t-if="o.validity_date">
+                                                    | Cotización valida hasta: <span t-field="o.validity_date" t-options="{&quot;widget&quot;: &quot;date&quot;}" /> <br/>
+                                                </t>
                                                 | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
                                                 | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
                                                 entrega <br/>

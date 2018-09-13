@@ -13,13 +13,14 @@
 
     # Categories can be used to filter modules in modules listing
     'category': 'IQ',
-    'version': '1.0',
+    'version': '1.2',
 
     # any module necessary for this one to work correctly
     'depends': ['purchase'],
 
     # always loaded
     'data': [
-        'views/purchase_views.xml'
+        'views/purchase_views.xml',
+        'views/report_purchaseorder.xml'
     ]
 }

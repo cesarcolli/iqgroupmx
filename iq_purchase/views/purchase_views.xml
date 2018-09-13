@@ -2,20 +2,40 @@
 <odoo>
     <data>
 
-        <!-- SALE ORDER INHERIT VIEWS -->
+        <record model="ir.ui.view" id="purchase_order_line_form2">
+            <field name="name">iq_purchase.order.line.form2</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_form2"/>
+            <field name="arch" type="xml">
+                <field name="price_unit" position="after">
+                    <field name="iq_discount"/>
+                </field>
+            </field>
+        </record>
 
-        <record id="iq_purchase_order_form" model="ir.ui.view">
-            <field name="name">purchase.order.form</field>
+        <record model="ir.ui.view" id="purchase_order_line_tree">
+            <field name="name">iq_purchase.order.line.tree</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="price_unit" position="after">
+                    <field name="iq_discount"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="purchase_order_form">
+            <field name="name">iq_purchase.purchase.order.form</field>
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
-
-                <xpath expr="//field[@name='price_unit']" position="before">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
                     <field name="iq_discount"/>
                 </xpath>
-
+                <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
+                    <field name="iq_discount"/>
+                </xpath>
             </field>
-
         </record>
 
     </data>
