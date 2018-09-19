@@ -21,6 +21,8 @@
     # always loaded
     'data': [
         'views/purchase_views.xml',
-        'views/report_purchaseorder.xml'
+        'views/report_purchaseorder.xml',
+        'views/iq_payment_type.xml',
+        'views/res_config_settings_views.xml',
     ]
 }

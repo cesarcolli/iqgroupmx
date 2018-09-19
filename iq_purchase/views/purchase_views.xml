@@ -35,6 +35,10 @@
                 <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="after">
                     <field name="iq_discount"/>
                 </xpath>
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="iq_payment_type_id"/>
+                    <field name="iq_purchase_agent_id"/>
+                </xpath>
             </field>
         </record>
 
