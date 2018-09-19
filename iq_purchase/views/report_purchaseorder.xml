@@ -52,6 +52,10 @@
                 font-weight: bold;
             }
 
+            .po_content {
+                width: 100%;
+            }
+
             .po_content th {
                 color: #253a8b;
                 padding-left: 5px;
@@ -109,7 +113,7 @@
 
     <template id="iq_purchaseorder_document_body">
 
-        <h3>PEDIDO A PROVEEDOR</h3>
+        <h3><t t-esc="'PEDIDO A PROVEEDOR' if IS_PURCHASE_ORDER else 'SOLICITUD DE PRESUPUESTO'"/></h3>
 
         <br/>
 
@@ -153,7 +157,7 @@
         <table class="po_content">
             <tr>
                 <th>REF.</th>
-                <th>NOMBRE</th>
+                <th style="min-width: 300px;">NOMBRE</th>
                 <th t-if="IS_PURCHASE_ORDER" class="text-right">PRECIO</th>
                 <th t-if="IS_PURCHASE_ORDER" class="text-right">DTO.</th>
                 <th class="text-right">UDS.</th>
@@ -164,10 +168,7 @@
             <t t-foreach="o.order_line" t-as="line">
                 <tr>
                     <td><span t-field="line.product_id.default_code"/></td>
-                    <td><span t-field="line.name"/><br/>
-                        <span class="gray_text">Impresión de diseño de boleto de IQ Group en una tinta al
-                        dorso del boleto en diseño proporcionado por el cliente.</span>
-                    </td>
+                    <td><span t-field="line.name"/></td>
                     <td t-if="IS_PURCHASE_ORDER" class="text-right"><span t-field="line.price_unit"/></td>
                     <td t-if="IS_PURCHASE_ORDER" class="text-right"><span t-field="line.iq_discount"/>%</td>
                     <td class="text-right">
@@ -185,14 +186,16 @@
 
             <tr t-if="IS_PURCHASE_ORDER">
                 <td colspan="4" rowspan="2" style="border: none !important;"></td>
-                <th colspan="2" style="text-align: left;">BASE</th>
-                <td>
+                <th colspan="2" style="text-align: left;">BASE (<t t-esc="o.currency_id.name"/>)</th>
+                <td class="text-right">
                     <span t-field="o.amount_untaxed" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                 </td>
             </tr>
             <tr t-if="IS_PURCHASE_ORDER">
-                <th colspan="2" style="text-align: left;">TOTAL</th>
-                <td><b t-field="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/></td>
+                <th colspan="2" style="text-align: left;">TOTAL (<t t-esc="o.currency_id.name"/>)</th>
+                <td class="text-right">
+                    <b t-field="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
+                </td>
             </tr>
         </table>
         
