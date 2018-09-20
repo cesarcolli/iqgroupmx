@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="stock.report_deliveryslip">
+
+            <t t-call="web.basic_layout">
+
+                <style>
+                    table {
+                        border-collapse: collapse;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
+
+                    table.address_table {
+                        width: 100%;
+                    }
+
+                    table.address_table th {
+                        width: 100px;
+                        text-align: left;
+                    }
+
+                    table.delivery_table {
+                        width: 100%;
+                    }
+
+                    table.delivery_table th {
+                        width: 160px;
+                        text-align: left;
+                    }
+
+                    table.comments_table {
+                        width: 100%;
+                        border: solid 5px #e1e2e6;
+                    }
+
+                    table.comments_table .title {
+                        color: #364554;
+                        font-size: 20px;
+                        font-weight: bold;
+                        text-align: center;
+                        height: 50px;
+                    }
+
+                    table.comments_table th {
+                        height: 30px;
+                        width: 300px;
+                        text-align: right;
+                        padding-right: 15px;
+                    }
+
+                    table.comments_table .separator {
+                        height: 20px;
+                    }
+
+                    table.comments_table .field {
+                        border: solid 1px;
+                    }
+
+                    table.comments_table .padd {
+                        width: 10px;
+                    }
+
+                    p.p_list {
+                        line-height: 1.5em;
+                    }
+
+                    table.sign_table {
+                        width: 100%;
+                    }
+
+                    table.sign_table th {
+                        text-align: center;
+                    }
+
+                    table.sign_table .sign_container {
+                        width: 50%;
+                    }
+
+                    table.sign_table table {
+                        margin-left:auto; 
+                        margin-right:auto;
+                        border: dotted 1px;
+                    }
+
+                    table.sign_table table td {
+                        text-align: center;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
+
+                    table.sign_table .sign_title {
+                        height: 55px;
+                    }
+
+                    table.sign_table .sign_line {
+                        height: 45px;
+                        vertical-align: bottom;
+                    }
+
+                    table.sign_table .separator {
+                        height: 30px;
+                    }
+
+                    table.notes_table {
+                        width: 100%;
+                        border: solid 5px #e1e2e6;
+                    }
+
+                    table.notes_table .title {
+                        color: #364554;
+                        font-size: 20px;
+                        font-weight: bold;
+                        text-align: center;
+                        height: 50px;
+                    }
+
+                    table.notes_table .padd {
+                        width: 10px;
+                    }
+
+                    table.notes_table .separator {
+                        height: 20px;
+                    }
+
+                    table.notes_table .text {
+                        border: solid 1px #e1e2e6;
+                        height: 25px;
+                    }
+
+                    thead th {
+                        background: #CCC;
+                        text-align: center;
+                    }
+
+                </style>
+
+                <t t-foreach="docs" t-as="o">
+
+                    <t t-set="company" t-value="o.company_id"/>
+                    <t t-set="customer" t-value="o.partner_id"/>
+
+                    <div class="header">
+                        <t t-set="FORMAT_TITLE" t-value="'FORMATO DE ENTREGA'"/>
+                        <t t-call="iq_inventory.iq_stock_picking_header"/>
+                    </div>
+
+                    <div class="page">
+
+                        <h2>Datos del cliente</h2>
+
+                        <table class="address_table">
+                            <tr>
+                                <th>Empresa:</th>
+                                <td><span t-field="o.partner_id"/></td>
+                            </tr>
+                            <tr t-if="customer.phone">
+                                <th>Telefono:</th>
+                                <td><span t-field="customer.phone"/></td>
+                            </tr>
+                            <tr t-if="customer.mobile">
+                                <th>Telefono 2:</th>
+                                <td><span t-field="customer.mobile"/></td>
+                            </tr>
+                            <tr t-if="customer.street">
+                                <th>Calle</th>
+                                <td><span t-field="customer.street"/></td>
+                            </tr>
+                            <tr t-if="customer.check_attr('street_number')">
+                                <th>N° ext.:</th>
+                                <td><span t-field="customer.street_number"/></td>
+                            </tr>
+                            <tr t-if="customer.check_attr('street_number2')">
+                                <th>N° int.:</th>
+                                <td><span t-field="customer.street_number2"/></td>
+                            </tr>
+                            <tr t-if="customer.check_attr('l10n_mx_edi_colony')">
+                                <th>Colonia:</th>
+                                <td><span t-field="customer.l10n_mx_edi_colony"/></td>
+                            </tr>
+                            <tr t-if="customer.zip">
+                                <th>C.P.:</th>
+                                <td><span t-field="customer.zip"/></td>
+                            </tr>
+                            <tr t-if="customer.city">
+                                <th>Ciudad:</th>
+                                <td><span t-field="customer.city"/></td>
+                            </tr>
+                            <tr t-if="customer.state_id">
+                                <th>Estado:</th>
+                                <td><span t-field="customer.state_id"/></td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-condensed mt48">
+                            <thead>
+                                <tr>
+                                    <th><strong>#</strong></th>
+                                    <th><strong>Código</strong></th>
+                                    <th><strong>Producto</strong></th>
+                                    <th><strong>Linea</strong></th>
+                                    <th><strong>Unidad</strong></th>
+                                    <th><strong>Cantidad</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="num_line" t-value="1"/>
+
+                                <tr t-foreach="o.move_lines" t-as="move">
+                                    <td><t t-esc="num_line"/></td>
+                                    <td><span t-field="move.product_id.default_code"/></td>
+                                    <td><span t-field="move.product_id"/></td>
+                                    <td></td>
+                                    <td><span t-field="move.product_uom"/></td>
+                                    <td class="text-right"><span t-field="move.ordered_qty"/></td>
+
+                                    <t t-set="num_line" t-value="num_line + 1"/>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <br/>
+                        <br/>
+
+                        <table class="delivery_table">
+                            <tr>
+                                <th>Tiempo de entrega:</th>
+                                <td>Inmediato</td>
+                            </tr>
+                            <tr>
+                                <th>Tiempo de instalación:</th>
+                                <td>(no definido)</td>
+                            </tr>
+                            <tr>
+                                <th>Equipo:</th>
+                                <td>100% al ordenar</td>
+                            </tr>
+                            <tr>
+                                <th>Instalación:</th>
+                                <td>(no definido)</td>
+                            </tr>
+                            <tr>
+                                <th>Viáticos:</th>
+                                <td>(no definido)</td>
+                            </tr>
+                            <tr>
+                                <th>Obra Civil y Eléctrico:</th>
+                                <td>(no definido)</td>
+                            </tr>
+                            <tr>
+                                <th>Envío:</th>
+                                <td>Cliente recoge</td>
+                            </tr>
+                        </table>
+
+                        <br/>
+                        <br/>
+
+                        <p class="p_list">
+
+                            | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
+                            | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o entrega <br/>
+                            | Precios sujetos a cambio sin previo aviso <br/>
+                            | Por ser equipo de importación o fabricación especial no se puede cancelar el pedido una vez aceptada esta cotización
+                            
+                        </p>
+
+                        <p style="page-break-before:always;"></p>
+
+                        <table class="comments_table">
+                            <tr>
+                                <td class="title" colspan="4">OBSERVACIONES</td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <th>Fecha de compromiso de entrega:</th>
+                                <td class="field"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td class="separator" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <th>Contacto principal:</th>
+                                <td class="field"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td class="separator" colspan="4"></td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <th>Condiciones especiales autorizadas:</th>
+                                <td class="field"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="separator"></td>
+                            </tr>
+                        </table>
+
+                        <br/>
+                        <br/>
+
+                        <table class="sign_table">
+                            <tr>
+                                <td class="sign_container">
+                                    <table>
+                                        <tr>
+                                            <td class="sign_title">Acepto</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Cliente</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Nombre y firma</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="sign_container">
+                                    <table>
+                                        <tr>
+                                            <td class="sign_title">Acepto</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Asesor</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Nombre y firma</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="separator" colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td class="sign_container">
+                                    <table>
+                                        <tr>
+                                            <td class="sign_title">Acepto</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Técnico</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Nombre, fecha y firma</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td class="sign_container">
+                                    <table>
+                                        <tr>
+                                            <td class="sign_title">Acepto</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sign_line">______________________________________</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Almacén</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Nombre, fecha y firma</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br/>
+                        <br/>
+
+                        <table class="notes_table">
+                            <tr>
+                                <td class="title" colspan="3">NOTAS</td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <td class="text"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <td class="text"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <td class="text"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <td class="text"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td class="padd"></td>
+                                <td class="text"></td>
+                                <td class="padd"></td>
+                            </tr>
+                            <tr>
+                                <td class="separator" colspan="3"></td>
+                            </tr>
+                        </table>
+                        
+                    </div>
+
+                    <div class="footer">
+                        <t t-call="iq_inventory.iq_stock_picking_footer"/>
+                    </div>
+
+                </t>
+
+            </t>
+
+        </template>
+
+    </data>
+</odoo>

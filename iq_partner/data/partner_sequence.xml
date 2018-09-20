@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<odoo noupdate="1">
+    <record model="ir.sequence" id="seq_res_partner_customer">
+        <field name="name">Customer code</field>
+        <field name="code">res.partner.customer</field>
+        <field name="prefix">CLP</field>
+        <field name="padding">4</field>
+    </record>
+    <record model="ir.sequence" id="seq_res_partner_supplier">
+        <field name="name">Supplier code</field>
+        <field name="code">res.partner.supplier</field>
+        <field name="prefix">PROV</field>
+        <field name="padding">4</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_accces_vehicule">
+        <field name="name">Acceso vehicular</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_alarms">
+        <field name="name">Detección y alarmas</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_cctv">
+        <field name="name">CCTV</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_access_control">
+        <field name="name">Control de Acceso</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_assitance_control">
+        <field name="name">Control de Asistencia</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_network">
+        <field name="name">Redes Voz y Datos</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_parking_tools">
+        <field name="name">Equipo para Estacionamientos</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_parking_machines">
+        <field name="name">Parquímetros</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_cut_wheels">
+        <field name="name">Picos Ponchallantas</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_pilonas">
+        <field name="name">Pilonas</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_security_transit">
+        <field name="name">Seguridad Vial</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_security_torniquetes">
+        <field name="name">Torniquetes</field>
+    </record>
+    <record model="partner.interest" id="iq_interest_security_promotions">
+        <field name="name">Promociones</field>
+    </record>
+</odoo>

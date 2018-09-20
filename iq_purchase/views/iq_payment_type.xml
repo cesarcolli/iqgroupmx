@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- IQ PAYMENT TYPE VIEWS -->
+
+        <record id="iq_payment_type_action" model="ir.actions.act_window">
+            <field name="name">Forma de pago</field>
+            <field name="res_model">iq.payment.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record model="ir.ui.view" id="iq_payment_type_form">
+            <field name="name">iq_payment_type_form</field>
+            <field name="model">iq.payment.type</field>
+            <field name="arch" type="xml">
+                <form name="Forma de pago">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="iq_payment_type_tree">
+            <field name="name">iq_payment_type_tree</field>
+            <field name="model">iq.payment.type</field>
+            <field name="arch" type="xml">
+                <tree name="Forma de pago">
+                    <field name='name'/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

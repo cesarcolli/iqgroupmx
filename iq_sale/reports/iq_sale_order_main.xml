@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="iq_sale_order_footer">
+
+            <style>
+                .footer_text{
+                    color: #89bd23;
+                    font-size: 12px;
+                }
+
+                div.footer_back{
+                    width: 800px;
+                    height: 62px;
+                    background-image: url("/iq_sale/static/src/img/sale_order_footer.png");
+                    background-repeat: no-repeat;
+                }
+
+                tr.footer_end{ 
+                    border-top: solid 3px #89bd23;
+                    color: #4e5b68;
+                }
+
+                tr.footer_end span {
+                    font-weight: bold;
+                    color: #3e4c5a;
+                }
+
+                tr.footer_end td {
+                    font-size: 12px;
+                }
+            </style>
+            
+            <table style="width: 100%">
+                <tr class="footer_end">
+                    <td style="width: 30%; padding-left: 10px">
+                        <table>
+                            <tr>
+                                <td><span>© IQ GROUP</span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a class="footer_text" href="http://www.iqgroup.com.mx">www.iqgroup.com.mx</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="width: 230px; padding-top: 15px;"><span>MONTERREY:</span> (81) 1935 5069</td>
+                                <td style="padding-top: 15px;"><span>LEÓN:</span> 01 800 467 2651</td>
+                            </tr>
+                            <tr>
+                                <td><span>GUADALAJARA:</span> 01 800 467 2651</td>
+                                <td><span>CIUDAD DE MÉXICO:</span> (01 55) 6721 9070 y (01 55) 6721 9071</td>
+                            </tr>
+                            <tr style="height: 45px">
+                                <td colspan="2" class="footer_label">Si tu ciudad no se encuentra dentro de las anteriores. Llama sin costo al: <span style="font-size: 18px">01 800 467 2651</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </template>
+
+    </data>
+</odoo>

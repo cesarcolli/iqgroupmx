@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="iq_sale_order_paper_format" model="report.paperformat">
+            <field name="name">US Letter Quotation</field>
+            <field name="format">Letter</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">25</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="sale_stock.report_saleorder_document_inherit_sale_stock" model="ir.ui.view">
+            <field name="active" eval="False"/>
+        </record>
+
+        <record id="sale.action_report_saleorder" model="ir.actions.report">
+            <field name="paperformat_id" ref="iq_sale_order_paper_format"/>
+        </record>
+
+        <template id="sale.report_saleorder_document">
+
+            <t t-call="web.basic_layout">
+
+                <style>
+                    table {
+                        border-collapse: collapse;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
+
+                    .tx_bold{
+                        font-weight: bold;
+                    }
+
+                    .tx_bolder{
+                        font-weight: bolder;
+                    }
+
+                    table.field_border1 td {
+                        border: solid 1px;
+                    }
+
+                    .field_label{
+                        color: #353535;
+                        font-size: 18px;
+                    }
+
+                    .field_text{
+                        color: #89bd23;
+                        padding-left: 10px;
+                        font-size: 18px;
+                    }
+
+                    td.wrapper {
+                        position: relative;
+                        width: 100%;
+                        height: 450px;
+                    }
+
+                    div.header_date{
+                        color: #8fc02f;
+                        font-size: 26px;
+                        font-weight: bold;
+                        position: absolute;
+                        top: 40;
+                        right: 0;
+                        z-index: 100;
+                        border-bottom: solid 2px #364554;
+                        padding-right: 50px;
+                    }
+
+                    div.header_back{
+                        background: 
+                        color: #999999;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: -100;
+                        width: 100%;
+                        height: 450px;
+                        background-image: url("/iq_sale/static/src/img/sale_order_back.png");
+                        background-repeat: no-repeat;
+                        background-size: 1000px 450px;
+                    }
+
+                    div.header_title{
+                        color: #364554;
+                        font-size: 40px;
+                        font-weight: bold;
+                        border-bottom: solid 2px #364554;
+                        margin-left: 100px;
+                        padding-top: 40px;
+                        padding-bottom: 20px;
+                        margin-bottom: 40px;
+                    }
+
+                    td.header_title {
+                        color: #364554;
+                        font-size: 40px;
+                        font-weight: bold;
+                        vertical-align: bottom;
+                    }
+
+                    td.border_top {
+                        border-top: solid 10px #89bd23;
+                        height: 10px;
+                    }
+
+                    td.border_mid {
+                        border-top: solid 5px #e1e2e6;
+                    }
+
+                    div.footer_numdoc{
+                        color: #364554;
+                        font-size: 26px;
+                        font-weight: bold;
+                        border-bottom: solid 2px #8fc02f;
+                        padding-left: 50px;
+                        max-width: 800px;
+                        display: inline;
+                    }
+
+                    h2 {
+                        color: #364554;
+                    }
+
+                    h3.service_title {
+                        color: #89bd23;
+                        display: flex;
+                        align-items:center;
+                        font-size: 16px;
+                    }
+
+                    h3.service_title img {
+                        max-height: 70px;
+                        margin-right: 15px;
+                    }
+
+                    td.quotation_label {
+                        color: #505050;
+                        padding-left: 50px;
+                        font-weight: bold;
+                    }
+                    td.quotation_text {
+                        color: #364554;
+                        border-bottom: solid 2px #89bd23;
+                        font-weight: bold;
+                    }
+
+                    tr.quotation_header {
+                        background: #7f7f7f;
+                        color: #FFF;
+                    }
+
+                    tr.quotation_header th {
+                        text-align: center;
+                    }
+
+                    tr.odd {
+                        background: #e1e2e6;
+                    }
+
+                    span.quotation_title {
+                        color: #364554;
+                        font-size: 30px;
+                        font-weight: bold;
+                        padding-bottom: 2px;
+                        border-bottom: solid 2px #364554;
+                    }
+
+                    td.qt_column1{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        text-align: right;
+                    }
+
+                    td.qt_column2{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                    }
+
+                    td.qt_column3{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        padding-top: 2px;
+                        padding-left: 2px;
+                    }
+
+                    td.qt_column4{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        text-align: center;
+                    }
+
+                    td.qt_column5{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        text-align: center;
+                    }
+
+                    td.qt_column6{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        text-align: center;
+                    }
+
+                    td.qt_column7{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        text-align: right;
+                    }
+
+                    td.qt_column8{
+                        vertical-align: middle;
+                        border: solid 1px #a1a1a1;
+                        text-align: center;
+                    }
+
+                    th.qt_title1{
+                        width: 25px;
+                    }
+
+                    th.qt_title2{
+                        width: 100px;
+                    }
+
+                    th.qt_title3{
+                        width: 90px;
+                    }
+
+                    th.qt_title4{
+                        width: 90px;
+                    }
+
+                    th.qt_title5{
+                        width: 700px;
+                    }
+
+                    th.qt_title6{
+                        width: 100px;
+                    }
+
+                    th.qt_title7{
+                        width: 100px;
+                    }
+
+                    th.qt_title8{
+                        width: 100px;
+                    }
+
+                    b {
+                        font-weight: bold;
+                    }
+
+                    td.doc_index {
+                        color: #364554;
+                        font-size: 28px;
+                        font-weight: bold;
+                        line-height: 2em;
+                    }
+
+                    td.text_hl {
+                        color: #a2cb52;
+                        height: 30px;
+                    }
+
+                    td.text_lb {
+                        padding-left: 30px;
+                    }
+
+                    td.payment_header{
+                        color: #364554;
+                        font-size: 20px;
+                        font-weight: bolder;
+                        height: 30px;
+                        vertical-align: middle;
+                    }
+
+                    table.payment_info{
+                        border: solid 5px #a2cb52;
+                        width: 250px;
+                        height: 220px;
+                    }
+
+                    table.payment_info td{
+                        height: 30px;
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        line-height: 1.8em;
+                    }
+
+                </style>
+
+                <t t-foreach="docs" t-as="o">
+
+                    <t t-set="company" t-value="o.company_id"/>
+
+                    <!-- MAIN PAGE -->
+
+                    <div class="page">
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <table style="width: 100%">
+                            <tr>
+                                <td class="wrapper">
+                                    <div class="header_back"></div>
+                                    <div class="header_date" t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <t t-if="o.quotation_title">
+                                        <div class="header_title"><t t-esc="o.quotation_title"/></div>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-top: 50px">
+                                    <table class="tx_center">
+                                        <tr>
+                                            <td class="field_label tx_bolder">Empresa:</td>
+                                            <td class="field_text tx_bolder"><t t-esc="o.partner_id.name"/></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <t t-if="o.customer_contact_id.name">
+                                <tr>
+                                    <td style="padding-top: 15px">
+                                        <table class="tx_center">
+                                            <tr>
+                                                <td class="field_label tx_bolder">Contacto:</td>
+                                                <td class="field_text tx_bolder"><t t-esc="o.customer_contact_id.name"/></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr>
+                                <td style="padding-top: 15px">
+                                    <table class="tx_center">
+                                        <tr>
+                                            <td class="field_label tx_bolder">Asesor Comercial:</td>
+                                            <td class="field_text tx_bolder"><t t-esc="o.user_id.name"/></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+                        <div class="footer_numdoc">Cotización <t t-esc="o.name"/></div>
+
+                        <p style="page-break-before:always;"> </p>
+                    </div>
+
+                    <!-- INDEX -->
+
+                    <div class="page">
+                        
+                        <table style="width: 100%">
+                            <tr>
+                                <td class="border_top"></td>
+                                <td class="border_top"></td>
+                                <td class="border_top"></td>
+                            </tr>
+                            <tr style="height: 80px">
+                                <td class="header_title">Índice</td>
+                                <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="border_mid" ></td>
+                                <td class="border_mid" style="width: 40px"></td>
+                            </tr>
+                        </table>
+
+                        <table style="width: 100%">
+                            <tr>
+                                <td class="doc_index">
+
+                                    1. Portada<br/>
+                                    2. Índice<br/>
+
+                                    <t t-foreach="o.quotation_page_index()" t-as="iline">
+                                        <t t-esc="'%s. %s' % (iline[0], iline[1])"/> <br/>
+                                    </t>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="page-break-before:always;"> </p>
+                    </div>
+
+                    <t t-if="o.quotation_sec_about">
+
+                        <!-- ABOUT -->
+
+                        <div class="page">
+                            
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">¿Quiénes somos?</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <span>
+                                            IQ Group nace para cubrir en el mercado la necesidad de contar con una empresa que integre todas las
+                                            especialidades de seguridad electrónica y comunicaciones que incluyen: de control de acceso vehicular y peatonal,
+                                            CCTV, incendio, telecomunicaciones, estacionamientos y soluciones para instalaciones de alta seguridad.
+                                            Le brindamos a nuestros clientes la asesoría técnica y apoyo necesario para que sus proyectos se lleven a cabo
+                                            con éxito. <br/><br/>
+
+                                            Nuestra misión es el proveer soluciones integrales en seguridad electrónica y telecomunicaciones que integren
+                                            equipos de la más alta calidad brindándole a nuestro clientes una solución llave en mano, a un costo competitivo y
+                                            que supere sus expectativas. <br/><br/>
+
+                                            <h2>OBJETIVOS</h2> <br/>
+
+                                            | Obtener el reconocimiento de nuestros clientes como una empresa que tiene como prioridad la satisfacción
+                                            del cliente. <br/><br/>
+
+                                            | Crecer las oportunidades de negocio con nuestros clientes, detectando áreas de oportunidad a desarrollar
+                                            con el fin de obtener un beneficio mutuo. <br/><br/>
+
+                                            | Proponer nuevas formas para cerrar negocios que contribuyan al ahorro sustancial de nuestros clientes.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="page-break-before:always;"> </p>
+                        </div>
+
+                    </t>
+
+                    <t t-if="o.quotation_sec_services">
+
+                        <!-- SERVICES -->
+
+                        <div class="page">
+                            
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">Servicios</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+
+                            <table style="width: 100%; line-height: 2em">
+                                <tr>
+                                    <td>
+                                        <span>
+                                            Con cientos de instalaciones a nivel nacional, IQ Group está comprometido con sus clientes a brindar un servicio
+                                            que cumpla con las exigencias de calidad y servicio que nos distinguen. Es por eso que contamos con procesos y
+                                            procedimientos que garantiza a nuestros clientes que están trabajando con una de las empresas con mayor
+                                            experiencia en el ramo. <br/>
+
+                                            <h3 class="service_title"><img src="/iq_sale/static/src/img/srv001.png"/> CALIDAD DE LA INSTALACIÓN</h3>
+
+                                            IQ Group se encarga de la realización de proyectos llave en mano para que usted no se preocupe de ningún detalle.
+                                            Nuestros técnicos altamente calificados son entrenados directamente con el fabricante para manejar proyectos de
+                                            cualquier tamaño. <br/>
+
+                                            Con el fin de asegurarse de proporcionar excelente servicio al cliente y la comunicación, cada equipo de proyecto de
+                                            instalación se compone de un jefe de proyecto, un técnico de instalación senior y un técnico junior. El jefe de
+                                            proyectos de instalación no sólo se encarga de los horarios y las órdenes de equipo, sino también envía
+                                            actualizaciones diarias del proyecto para asegurarse de que el cliente siempre sabe el status de su instalación. A
+                                            través de nuestra página web nuestro clientes tienen acceso a una cuenta establecida para ellos, en donde tienen
+                                            conocimiento de los tiempos de entrega de equipos, calendarización de entregas e instalación y avances de obra.
+
+                                            <h3 class="service_title"><img src="/iq_sale/static/src/img/srv002.png"/> INSTALACIONES A NIVEL NACIONAL</h3>
+
+                                            Con casi 10 años en el mercado y la experiencia que esto nos ha brindado podemos manejar cualquier tamaño de
+                                            instalación fuera de nuestro territorio, siendo más del 80% de las mismas fuera de Monterrey y la ciudad de México.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="page-break-before:always;"> </p>
+
+                            <table style="width: 100%; line-height: 2em">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">Servicios</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <h3 class="service_title"><img src="/iq_sale/static/src/img/srv003.png"/> PROPUESTAS PERSONALIZADAS</h3>
+
+                                            El departamento de ingeniería de IQ Group ha desarrollado su metodología y establecido estándares para el diseño
+                                            de los proyectos a realizar de forma eficiente, organizada y orientada a proporcionar la propuesta que
+                                            recomendamos como la mejor opción para nuestros clientes. Lo anterior en base a el conocimiento, experiencia y
+                                            capacidad de nuestro personal para el diseño de sistemas integrales que satisfagan los más estrictos estándares
+                                            de calidad. Como parte de este proceso evaluamos junto con el cliente los requisitos, necesidades y alcances de su
+                                            proyecto para entregarle una propuesta personalizada de acuerdo a su presupuesto.
+
+                                            <h3 class="service_title"><img src="/iq_sale/static/src/img/srv004.png"/> SISTEMAS DE DOCUMENTACIÓN</h3>
+
+                                            Al final de cada proyecto, IQ Group ofrecerá, sin costo alguno, una carpeta de 3 anillos que contienen los manuales
+                                            de instrucciones, manuales de instalación y CD, y las notas de programación asociadas a la instalación. Esto
+                                            asegura que toda la documentación del sistema de seguridad está disponible para una fácil referencia en el futuro.
+                                            
+                                            <h3 class="service_title"><img src="/iq_sale/static/src/img/srv005.png"/> SOPORTE 24 / 7 / 365</h3>
+
+                                            IQ Group proporciona soporte hasta por 24 horas del día, 7 días a la semana los 365 días del año. Esto como parte
+                                            de las diferentes pólizas de servicio correctivo y preventivo con las cuales podemos servirles.
+                                            El Departamento de Servicio es responsable de las reparaciones en el campo y el mantenimiento de los equipos
+                                            que hayamos instalado. Nuestro enfoque es la satisfacción total del cliente. <br/>
+
+                                            Nuestra meta es mantener su sistema en línea con muy mínimo tiempo de inactividad.
+                                            
+                                            Logramos esto al asegurar que todos nuestros técnicos estén entrenados en la fábrica y cuenten con las
+                                            herramientas y equipos necesarios para responder en el menor tiempo a sus llamadas de servicio.
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="page-break-before:always;"> </p>
+
+                        </div>
+
+                    </t>
+
+                    <!-- QUOTATION -->
+
+                    <div class="page">
+
+                        <t t-set="currency" t-value="o.pricelist_id.currency_id"/>
+                        
+                        <table style="width: 100%">
+                            <tr>
+                                <td class="border_top"></td>
+                                <td class="border_top"></td>
+                                <td class="border_top"></td>
+                            </tr>
+                            <tr style="height: 80px">
+                                <td class="header_title">Propuesta económica</td>
+                                <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="border_mid" ></td>
+                                <td class="border_mid" style="width: 40px"></td>
+                            </tr>
+                        </table>
+
+                        <table style="width: 80%; height: 70px;">
+                            <tr>
+                                <td class="quotation_label">Empresa:</td>
+                                <td class="quotation_text"><t t-esc="o.partner_id.name"/></td>
+                                <td class="quotation_label">Folio:</td>
+                                <td class="quotation_text"><t t-esc="o.name"/></td>
+                            </tr>
+                            <tr>
+                                <td class="quotation_label">Ciudad y Estado:</td>
+                                <td class="quotation_text"><t t-esc="o.customer_location()"/></td>
+                                <td class="quotation_label">Fecha:</td>
+                                <td class="quotation_text"><div t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"></div></td>
+                            </tr>
+                            <tr>
+                                <td class="quotation_label">Contacto:</td>
+                                <td class="quotation_text"><t t-esc="o.customer_contact_id.name or '(no definido)'"/></td>
+                                <td class="quotation_label">Asesor comercial:</td>
+                                <td class="quotation_text"><t t-esc="o.user_id.name"/></td>
+                            </tr>
+                        </table>
+
+                        <br/>
+                        <br/>
+
+                        <table style="width: 100%">
+                            <tr class="quotation_header">
+                                <th class="qt_title1">#</th>
+                                <th class="qt_title2">Código</th>
+                                <th class="qt_title3">Imagen Producto</th>
+                                <th class="qt_title4">Ficha técnica</th>
+                                <th class="qt_title5">Producto/Concepto</th>
+                                <th class="qt_title6">Cantidad</th>
+                                <th class="qt_title7">P.lista</th>
+                                <th class="qt_title8">Subtotal</th>
+                            </tr>
+
+                            <t t-foreach="o.order_line" t-as="line">
+                                <tr style="height: 104px" t-att-class="'odd' if line.id % 2 == 0 else ''">
+                                    <td class="qt_column1"><t t-esc="line.line_num"/></td>
+                                    <td class="qt_column2"><t t-esc="line.product_id.default_code"/></td>
+                                    <td class="qt_column3">
+                                        <t t-if="line.product_id.image_medium">
+                                            <img 
+                                                style="width: 100px; height: 100px;" 
+                                                t-attf-src="data:image/*;base64,{{line.product_id.image_medium}}" 
+                                            />
+                                        </t>
+                                    </td>
+                                    <td class="qt_column4">
+                                        <t t-set="file_url" t-value="line.product_id.product_tmpl_id.tech_file_url()"/>
+
+                                        <t t-if="file_url">
+                                            <a target="_blank" t-att-href="file_url">
+                                                <i class="fa fa-book fa-2x" style="color: #364554"/>
+                                            </a>
+                                        </t>
+                                    </td>
+                                    <td class="qt_column5">
+                                        <t t-foreach="line.name.split('\n')" t-as="name_line">
+                                            <t t-esc="name_line"/> <br/>
+                                        </t>
+                                    </td>
+                                    <td class="qt_column6"><span t-field="line.product_uom_qty"/></td>
+                                    <td class="qt_column7"><span t-field="line.price_unit"/></td>
+                                    <td class="qt_column8"><span t-field="line.price_subtotal"/></td>
+                                </tr>
+                            </t>
+
+                            <tr>
+                                <td colspan="5" rowspan="3" style="text-align: center;">
+                                    <span class="quotation_title">PRECIO EN <t t-esc="currency.currency_unit_label.upper()"/> (<b t-esc="currency.name"></b>)</span>
+                                </td>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b t-esc="currency.name"></b> ):</td>
+                                <td class="qt_column7"><span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b t-esc="currency.name"></b> ):</td>
+                                <td class="qt_column7"><span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b t-esc="currency.name"></b> ):</td>
+                                <td class="qt_column7"><span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                            </tr>
+                        </table>
+
+                        <p style="page-break-before:always;"> </p>
+                    </div>
+
+                    <t t-if="o.quotation_sec_conditions">
+
+                        <!-- SALE RESTRICTIONS -->
+
+                        <div class="page">
+                            
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">Condiciones comerciales</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+                            
+                            <table style="width: 100%">
+                                <t t-if="o.iq_delivery_term_id">
+                                <tr>
+                                    <td>Tiempo de entrega:</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_delivery_term_id.name"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="o.iq_installation_time_term_id">
+                                <tr>
+                                    <td>Tiempo de instalación:</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_installation_time_term_id.name"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="o.iq_equipment_term_id">
+                                <tr>
+                                    <td>Equipo:</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_equipment_term_id.name"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="o.iq_installation_term_id">
+                                <tr>
+                                    <td>Instalación:</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_installation_term_id.name"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="o.iq_expenses_term_id">
+                                <tr>
+                                    <td>Viáticos:</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_expenses_term_id.name"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="o.iq_civil_work_term_id">
+                                <tr>
+                                    <td>Obra Civil y Eléctrico:</td>
+                                    <td class="text_hl" style="text-align: left;"><t t-esc="o.iq_civil_work_term_id.name"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="o.iq_shipping_term_id">
+                                <tr>
+                                    <td>Envío:</td>
+                                    <td class="text_hl"><t t-esc="o.iq_shipping_term_id.name"/></td>
+                                </tr>
+                                </t>
+                            </table>
+
+                            <hr/>
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <span>
+
+                                            <p style="line-height: 2em">
+                                                | PRECIO EN <b t-esc="'%s (%s)' % (currency.currency_unit_label.upper(), currency.name)" ></b> <br/>
+                                                <t t-if="o.validity_date">
+                                                    | Cotización valida hasta: <span t-field="o.validity_date" t-options="{&quot;widget&quot;: &quot;date&quot;}" /> <br/>
+                                                </t>
+                                                | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
+                                                | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o
+                                                entrega <br/>
+                                                | Precios sujetos a cambio sin previo aviso <br/>
+                                                | Por ser equipo de importación o fabricación especial no se puede cancelar el pedido una vez aceptada esta
+                                                cotización <br/>
+                                            </p>
+
+                                            <hr/>
+
+                                            <h2>CUENTAS BANCARIAS</h2>
+                                            
+                                            <table style="font-size: 18px; margin-bottom: 10px">
+                                                <tr>
+                                                    <td>Beneficiario:</td>
+                                                    <td class="text_hl"> <![CDATA[&nbsp;]]> IQ Parking, S.A. de C.V.</td>
+                                                </tr>
+                                            </table>
+
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <table class="payment_info" style="margin-right: 20px">
+                                                            <tr>
+                                                                <td class="text_lb payment_header" colspan="2">PESOS (MXN)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Banco:</td>
+                                                                <td class="text_hl">BANORTE</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Cuenta:</td>
+                                                                <td class="text_hl">0854440429</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">CLABE:</td>
+                                                                <td class="text_hl">072580006819043412</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">RFC:</td>
+                                                                <td class="text_hl">IPA100518260</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2"></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table class="payment_info">
+                                                            <tr>
+                                                                <td class="text_lb payment_header" colspan="2">DÓLARES (USD)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Banco:</td>
+                                                                <td class="text_hl">BANORTE</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">Cuenta:</td>
+                                                                <td class="text_hl">0854440429</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">CLABE:</td>
+                                                                <td class="text_hl">072580006819043412</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">RFC:</td>
+                                                                <td class="text_hl">IPA100518260</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text_lb">SWIFT:</td>
+                                                                <td class="text_hl">MENOMXMT</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                                    
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="page-break-before:always;"> </p>
+                        </div>
+
+                    </t>
+
+                    <t t-if="o.quotation_sec_info">
+
+                        <!-- EXTRA INFO -->
+
+                        <div class="page">
+                            
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">Información adicional</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+                            
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <span>
+                                                   
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="page-break-before:always;"> </p>
+                        </div>
+
+                    </t>
+
+                    <t t-if="o.quotation_sec_customers">
+
+                        <!-- CUSTOMERS -->
+
+                        <div class="page">
+                            
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                    <td class="border_top"></td>
+                                </tr>
+                                <tr style="height: 80px">
+                                    <td class="header_title">Nuestros Clientes</td>
+                                    <td style="width: 170px;" rowspan="2"><img src="/iq_sale/static/src/img/sale_order_header.png"/></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="border_mid" ></td>
+                                    <td class="border_mid" style="width: 40px"></td>
+                                </tr>
+                            </table>
+
+                            <table style="width: 100%">
+                                <tr>
+                                    <td>
+                                        <span>
+                                            Sin duda el compromiso más importante es el que tenemos con nuestros clientes, la razón y centro de todas
+                                            nuestras actividades. <br/>
+                                            Por ello estamos comprometidos a: <br/><br/>
+
+                                            <p style="padding-left: 20px">
+                                                | Conocer profundamente las necesidades y expectativas de nuestros clientes y mantener una estrecha
+                                                relación con ellos <br/>
+                                                | Cumplir siempre las promesas que les hacemos y vigilar el cumplimiento de éstas <br/>
+                                                | Trabajar centrados en ellos, entregandoles un servicio de calidad de excelencia, cercano, agíl y efectivo <br/>
+                                                | Garantizar su satisfacción, el diálog y la entrega de información transparente y oportuna de nuestros
+                                                productos y servicios. <br/>
+                                                | Evaluar periódicamente su satisfacción. <br/><br/>
+                                            </p>
+
+                                            Es por eso que a lo largo de estos 7 años contamos con mas de 300 clientes satisfechos con nuestros productos y
+                                            servicios, entre los cuales se encuentran:       
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        <img src="/iq_sale/static/src/img/our_customers.png"/>    
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="page-break-before:always;"> </p>
+                        </div>
+
+                    </t>
+
+                    <div class="footer">
+                        <t t-call="iq_sale.iq_sale_order_footer"/>
+                    </div>
+
+                </t>
+
+            </t>
+
+        </template>
+
+    </data>
+</odoo>

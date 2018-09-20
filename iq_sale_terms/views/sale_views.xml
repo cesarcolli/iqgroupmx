@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="iq_sale_order_form" model="ir.ui.view">
+        <field name="name">iq.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sale_pay']" position="after">
+                <group name="iq_sale_terms" string="Condiciones comerciales">
+                    <field name="iq_delivery_term_id" />
+                    <field name="iq_installation_time_term_id" />
+                    <field name="iq_equipment_term_id" />
+                    <field name="iq_installation_term_id" />
+                    <field name="iq_expenses_term_id" />
+                    <field name="iq_civil_work_term_id" />
+                    <field name="iq_shipping_term_id" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
