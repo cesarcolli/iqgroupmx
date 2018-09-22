@@ -16,7 +16,7 @@
     'version': '1.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['sale_management', 'sale_stock', 'iq_sale_terms'],
+    'depends': ['website_quote','sale_management', 'sale_stock', 'iq_sale_terms'],
 
     # always loaded
     'data': [
