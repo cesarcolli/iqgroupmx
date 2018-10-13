@@ -190,8 +190,7 @@
                     td.qt_column3{
                         vertical-align: middle;
                         border: solid 1px #a1a1a1;
-                        padding-top: 2px;
-                        padding-left: 2px;
+                        padding: 2px;
                     }
 
                     td.qt_column4{
@@ -297,6 +296,38 @@
 
                     span {
                         line-height: 1.8em;
+                    }
+
+                    table.customer_info {
+                        width: 100%;
+                    }
+
+                    td.customer_info_tab {
+                        width: 400px;
+                        padding-left: 10px;
+                    }
+
+                    td.first_tab {
+                        border-right: solid 2px #89bd23;
+                    }
+
+                    td.customer_info_tab table {
+                        min-width: 300px;
+                    }
+
+                    td.customer_info_tab table td {
+                        height: 25px;
+                    }
+
+                    h1 {
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                    .tab_title {
+                        color: #89bd23;
+                        border-bottom: solid 2px #e1e2e6;
+                        font-weight: bold;
                     }
 
                 </style>
@@ -611,24 +642,32 @@
                             </tr>
                         </table>
 
-                        <table style="width: 80%; height: 70px;">
+
+                        <table class="customer_info">
                             <tr>
-                                <td class="quotation_label">Empresa:</td>
-                                <td class="quotation_text"><t t-esc="o.partner_id.name"/></td>
-                                <td class="quotation_label">Folio:</td>
-                                <td class="quotation_text"><t t-esc="o.name"/></td>
-                            </tr>
-                            <tr>
-                                <td class="quotation_label">Ciudad y Estado:</td>
-                                <td class="quotation_text"><t t-esc="o.customer_location()"/></td>
-                                <td class="quotation_label">Fecha:</td>
-                                <td class="quotation_text"><div t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"></div></td>
-                            </tr>
-                            <tr>
-                                <td class="quotation_label">Contacto:</td>
-                                <td class="quotation_text"><t t-esc="o.customer_contact_id.name or '(no definido)'"/></td>
-                                <td class="quotation_label">Asesor comercial:</td>
-                                <td class="quotation_text"><t t-esc="o.user_id.name"/></td>
+                                <td class="first_tab customer_info_tab">
+                                    <span class="tab_title">DATOS DE PRESUPUESTO DE VENTA</span>
+                                    <p>
+                                        Número: <b t-field="o.name"/> <br/>
+                                        Fecha: <b t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"></b> <br/>
+                                        Estado: <b t-field="o.name"/> <br/>
+                                        <t t-if="o.user_id">
+                                            Agente: <b t-field="o.user_id"/><br/>
+                                        </t>
+                                    </p>
+                                </td>
+                                <td class="customer_info_tab">
+                                    <span class="tab_title">DATOS DEL CLIENTE</span>
+                                    <p>
+                                        <b><t t-esc="'%s%s' % (o.partner_id.name, (' (%s)' % o.customer_contact_id.name) if o.customer_contact_id.name else '')"/></b><br/>
+                                        <t t-foreach="o.partner_id.report_customer_address().split('\n')" t-as="aline">
+                                            <t t-esc="aline"/><br/>
+                                        </t>
+                                        <t t-if="o.partner_id.phone">
+                                            Tel: <span t-field="o.partner_id.phone"/><br/>
+                                        </t>
+                                    </p>
+                                </td>
                             </tr>
                         </table>
 
@@ -664,7 +703,8 @@
 
                                         <t t-if="file_url">
                                             <a target="_blank" t-att-href="file_url">
-                                                <i class="fa fa-book fa-2x" style="color: #364554"/>
+                                                <i class="fa fa-download fa-2x" style="color: #364554"/>
+                                                Descargar
                                             </a>
                                         </t>
                                     </td>
@@ -683,15 +723,15 @@
                                 <td colspan="5" rowspan="3" style="text-align: center;">
                                     <span class="quotation_title">PRECIO EN <t t-esc="currency.currency_unit_label.upper()"/> (<b t-esc="currency.name"></b>)</span>
                                 </td>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b t-esc="currency.name"></b> ):</td>
+                                <td colspan="2" style="vertical-align: middle; text-align: right; border-left: solid 1px #a1a1a1;">Subtotal ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b t-esc="currency.name"></b> ):</td>
+                                <td colspan="2" style="vertical-align: middle; text-align: right; border-left: solid 1px #a1a1a1;">IVA ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_tax" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b t-esc="currency.name"></b> ):</td>
+                                <td colspan="2" style="vertical-align: middle; text-align: right; border-left: solid 1px #a1a1a1; border-bottom: solid 1px #a1a1a1;">TOTAL ( <b t-esc="currency.name"></b> ):</td>
                                 <td class="qt_column7"><span t-esc="o.amount_total" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                             </tr>
                         </table>

@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
+import logging
+
 from odoo import api, fields, models
+
+_logger = logging.getLogger(__name__)
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
@@ -66,6 +70,10 @@ class SaleOrder(models.Model):
             qt_index.append([qt_page, 'Nuestros Clientes'])
 
         return qt_index
+
+    @api.onchange('partner_id')
+    def change_so_customer(self):
+        self.customer_contact_id = self.env['res.partner'].search([('parent_id', '=', self.partner_id.id)], limit=1).id
 
     def customer_location(self):
 
