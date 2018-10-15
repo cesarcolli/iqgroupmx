@@ -76,6 +76,13 @@
             .gray_text {
                 color: #a6a6a6;
             }
+
+            .comments_title {
+                color: #253a8b;
+                border-bottom: solid 1px #dbdbdb;
+                font-weight: bold;
+            }
+
         </style>
         
     </template>
@@ -135,7 +142,10 @@
                         </t>
                         Fecha de envío prevista: <b t-field="o.date_planned" t-options="{&quot;widget&quot;: &quot;date&quot;}"></b> <br/>
                         <t t-if="o.incoterm_id">
-                            Forma de envío: <b t-field="o.incoterm_id"/><br/>
+                            Incoterm: <b t-esc="o.incoterm_id.code"/><br/>
+                        </t>
+                        <t t-if="o.iq_transport_method">
+                            Método de transporte: <b t-field="o.iq_transport_method"/><br/>
                         </t>
                         <t t-if="o.iq_purchase_agent_id">
                             Agente: <b t-field="o.iq_purchase_agent_id"/><br/>
@@ -198,17 +208,19 @@
                 </td>
             </tr>
         </table>
+
+        <t t-if="o.notes">
+            <div class="comments_title">
+                OBSERVACIONES
+            </div>
+
+            <p t-field="o.notes"/>
+        </t>
         
     </template>
 
     <template id="iq_purchaseorder_document_footer">
         <style>
-            .comments_title {
-                color: #253a8b;
-                border-bottom: solid 1px #dbdbdb;
-                font-weight: bold;
-            }
-
             .foot_table {
                 border: solid 1px #dbdbdb;
                 width: 100%;
@@ -228,14 +240,6 @@
                 color: #a6a6a6;
             }
         </style>
-
-        <t t-if="o.notes">
-            <div class="comments_title">
-                OBSERVACIONES
-            </div>
-
-            <p t-field="o.notes"/>
-        </t>
 
         <table class="foot_table">
             <tr>
