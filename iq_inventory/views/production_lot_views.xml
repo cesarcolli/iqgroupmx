@@ -32,5 +32,28 @@
         </field>
     </record>
 
+    <record id="iq_inventory_view_production_lot_tree" model="ir.ui.view">
+        <field name="name">iq_inventory.stock.production.lot.inherit.tree</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_date']" position="after">
+                <field name="warranty_start_date"/>
+                <field name="warranty_end_date"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="iq_inventory_search_search_product_lot_filter_warranty" model="ir.ui.view">
+        <field name="name">iq_inventory.stock.production.lot.search.inherit</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.search_product_lot_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <filter string="Garantia vigente" domain="[('warranty_end_date','&gt;', time.strftime('%Y-%m-%d %H:%M:%S'))]"/>
+                <filter string="Garantia expirada" domain="[('warranty_end_date','&lt;', time.strftime('%Y-%m-%d %H:%M:%S'))]"/>
+            </xpath>
+        </field>
+     </record>
 
 </odoo>
