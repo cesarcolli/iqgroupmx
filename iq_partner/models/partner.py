@@ -25,6 +25,8 @@ class ResPartner(models.Model):
     x_interest_id = fields.Many2many('partner.interest', column1='partner_id',
                                      column2='x_interest_id', string='Categorías de interés', default=_default_interest)
 
+    x_comercial_name = fields.Char(string='Comercial name', translate=True)
+
     @api.multi
     def _get_next_customer_ref(self, vals=None):
         return self.env['ir.sequence'].next_by_code('res.partner.customer')
