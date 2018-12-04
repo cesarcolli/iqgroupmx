@@ -650,7 +650,7 @@
                                     <p>
                                         Número: <b t-field="o.name"/> <br/>
                                         Fecha: <b t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"></b> <br/>
-                                        Estado: <b t-field="o.name"/> <br/>
+                                        Estado: <b t-field="o.state"/> <br/>
                                         <t t-if="o.user_id">
                                             Agente: <b t-field="o.user_id"/><br/>
                                         </t>
