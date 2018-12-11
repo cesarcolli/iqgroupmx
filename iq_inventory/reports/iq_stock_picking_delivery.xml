@@ -191,6 +191,10 @@
                                 <th>Estado:</th>
                                 <td><span t-field="customer.state_id"/></td>
                             </tr>
+                            <tr>
+                                <th>Contacto:</th>
+                                <td><span t-if="o.sale_id.customer_contact_id" t-esc="o.sale_id.customer_contact_id.name"/></td>
+                            </tr>
                         </table>
 
                         <table class="table table-condensed mt48">
@@ -220,84 +224,13 @@
                             </tbody>
                         </table>
 
-                        <br/>
-                        <br/>
+                        <br t-if="o.sale_id.iq_shipping_term_id"/>
+                        <br t-if="o.sale_id.iq_shipping_term_id"/>
 
-                        <table class="delivery_table">
-                            <tr>
-                                <th>Tiempo de entrega:</th>
-                                <td>Inmediato</td>
-                            </tr>
-                            <tr>
-                                <th>Tiempo de instalación:</th>
-                                <td>(no definido)</td>
-                            </tr>
-                            <tr>
-                                <th>Equipo:</th>
-                                <td>100% al ordenar</td>
-                            </tr>
-                            <tr>
-                                <th>Instalación:</th>
-                                <td>(no definido)</td>
-                            </tr>
-                            <tr>
-                                <th>Viáticos:</th>
-                                <td>(no definido)</td>
-                            </tr>
-                            <tr>
-                                <th>Obra Civil y Eléctrico:</th>
-                                <td>(no definido)</td>
-                            </tr>
+                        <table t-if="o.sale_id.iq_shipping_term_id" class="delivery_table">
                             <tr>
                                 <th>Envío:</th>
-                                <td>Cliente recoge</td>
-                            </tr>
-                        </table>
-
-                        <br/>
-                        <br/>
-
-                        <p class="p_list">
-
-                            | El tiempo de entrega inicial corre a partir de la recepcion de la orden de compra y pago de anticipo <br/>
-                            | Este material esta garantizado contra cualquier defecto de fabricación por un año a partir de su instalación o entrega <br/>
-                            | Precios sujetos a cambio sin previo aviso <br/>
-                            | Por ser equipo de importación o fabricación especial no se puede cancelar el pedido una vez aceptada esta cotización
-                            
-                        </p>
-
-                        <p style="page-break-before:always;"></p>
-
-                        <table class="comments_table">
-                            <tr>
-                                <td class="title" colspan="4">OBSERVACIONES</td>
-                            </tr>
-                            <tr>
-                                <td class="padd"></td>
-                                <th>Fecha de compromiso de entrega:</th>
-                                <td class="field"></td>
-                                <td class="padd"></td>
-                            </tr>
-                            <tr>
-                                <td class="separator" colspan="4"></td>
-                            </tr>
-                            <tr>
-                                <td class="padd"></td>
-                                <th>Contacto principal:</th>
-                                <td class="field"></td>
-                                <td class="padd"></td>
-                            </tr>
-                            <tr>
-                                <td class="separator" colspan="4"></td>
-                            </tr>
-                            <tr>
-                                <td class="padd"></td>
-                                <th>Condiciones especiales autorizadas:</th>
-                                <td class="field"></td>
-                                <td class="padd"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" class="separator"></td>
+                                <td><span t-field="o.sale_id.iq_shipping_term_id"/></td>
                             </tr>
                         </table>
 
@@ -309,50 +242,7 @@
                                 <td class="sign_container">
                                     <table>
                                         <tr>
-                                            <td class="sign_title">Acepto</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sign_line">______________________________________</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sign_line">______________________________________</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Cliente</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Nombre y firma</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td class="sign_container">
-                                    <table>
-                                        <tr>
-                                            <td class="sign_title">Acepto</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sign_line">______________________________________</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="sign_line">______________________________________</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Asesor</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Nombre y firma</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="separator" colspan="2"></td>
-                            </tr>
-                            <tr>
-                                <td class="sign_container">
-                                    <table>
-                                        <tr>
-                                            <td class="sign_title">Acepto</td>
+                                            <td class="sign_title">Entrega</td>
                                         </tr>
                                         <tr>
                                             <td class="sign_line">______________________________________</td>
@@ -362,9 +252,6 @@
                                         </tr>
                                         <tr>
                                             <td class="sign_line">______________________________________</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Técnico</th>
                                         </tr>
                                         <tr>
                                             <td>Nombre, fecha y firma</td>
@@ -374,7 +261,7 @@
                                 <td class="sign_container">
                                     <table>
                                         <tr>
-                                            <td class="sign_title">Acepto</td>
+                                            <td class="sign_title">Recibe</td>
                                         </tr>
                                         <tr>
                                             <td class="sign_line">______________________________________</td>
@@ -384,9 +271,6 @@
                                         </tr>
                                         <tr>
                                             <td class="sign_line">______________________________________</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Almacén</th>
                                         </tr>
                                         <tr>
                                             <td>Nombre, fecha y firma</td>

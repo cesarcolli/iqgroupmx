@@ -16,7 +16,7 @@
                             <label for="iq_purchase_terms"/>
                             <span class="fa fa-lg fa-building-o" title="Values set here are company-specific." groups="base.group_multi_company"/>
                             <div class="text-muted">
-                                Mostrar terminos y condiciones en ordenes de compra
+                                Mostrar términos y condiciones en ordenes de compra
                             </div>
                             <div class="content-group" attrs="{'invisible': [('iq_purchase_terms','=',False)]}">
                                 <div class="mt16">

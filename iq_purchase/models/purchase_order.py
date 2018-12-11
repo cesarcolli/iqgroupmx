@@ -18,3 +18,12 @@ class PurchaseOrder(models.Model):
     notes = fields.Text(
         default=lambda self: self.env['res.company']._company_default_get(self._name).iq_purchase_default_terms
     )
+    iq_transport_method = fields.Selection(
+        string='Método de transporte',
+        size=1,
+        selection=[
+            ('A', 'Aereo'), 
+            ('M', 'Maritimo'),
+            ('T', 'Terrestre')
+        ]
+    )
