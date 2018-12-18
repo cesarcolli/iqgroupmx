@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- IQ CUSTOMER PROJECT VIEWS -->
+
+        <record model="ir.ui.view" id="iq_customer_project_form">
+            <field name="name">iq_customer_project_form</field>
+            <field name="model">iq.customer.project</field>
+            <field name="arch" type="xml">
+                <form name="Proyectos">
+
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Nombre"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="folio"/>
+                                <field name="customer_id"/>
+                                <field name="doc_date"/>
+                                <field name="customer_num"/>
+                            </group>
+                            <group>
+                                <field name="currency"/>
+                                <field name="waranty_start"/>
+                                <field name="waranty_end"/>
+                            </group>
+                            <group string="Información del Cliente">
+                                <field name="project_name"/>
+                                <field name="trade_name"/>
+                                <field name="ledger_name"/>
+                                <field name="customer_rfc"/>
+                                <field name="customer_contacts"/>
+                            </group>
+                            <field name="iq_contact_ids" context="{'default_contact_type': 'C', 'default_iq_project_id': id}"/>
+                            <group string="Operador">
+                                <field name="operator_name"/>
+                                <field name="operator_ledger_name"/>
+                                <field name="operator_rfc"/>
+                                <field name="op_contacts"/>
+                            </group>
+                            <field name="op_contact_ids" context="{'default_contact_type': 'O'}"/>
+                            <group string="Productos y Servicios que aplican">
+                                <field name="product_a"/>
+                                <field name="product_b"/>
+                                <field name="product_c"/>
+                                <field name="product_d"/>
+                                <field name="product_a_type"/>
+                                <field name="product_b_type"/>
+                                <field name="product_c_type"/>
+                                <field name="product_d_type"/>
+                                <field name="product_f_type"/>
+                            </group>
+                            <group string="Mantenimiento">
+                                <field name="maint_policy"/>
+                                <field name="maint_policy_type"/>
+                                <field name="maint_policy_a"/>
+                                <field name="maint_policy_b"/>
+                                <field name="maint_policy_c"/>
+                                <field name="maint_policy_d"/>
+                                <field name="maint_policy_e"/>
+                            </group>
+                            <group string="Boletos">
+                                <field name="ticket_month"/>
+                                <field name="ticket_order_type"/>
+                                <field name="ticket_custom"/>
+                                <field name="ticket_brand"/>
+                                <field name="ticket_model"/>
+                                <field name="ticket_tech"/>
+                                <field name="ticket_order_interval"/>
+                            </group>
+                            <group string="Precios">
+                                <field name="price_ticket"/>
+                                <field name="price_arm_bar"/>
+                                <field name="price_car_bar"/>
+                                <field name="price_pension_card"/>
+                                <field name="price_service_call"/>
+                            </group>
+                            <separator string="Observaciones"/>
+                            <field name="comments"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="iq_customer_project_tree">
+            <field name="name">iq_customer_project_tree</field>
+            <field name="model">iq.customer.project</field>
+            <field name="arch" type="xml">
+                <tree name="Proyectos">
+                    <field name="name"/>
+                    <field name="folio"/>
+                    <field name="doc_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="iq_customer_project_action" model="ir.actions.act_window">
+            <field name="name">Proyectos</field>
+            <field name="res_model">iq.customer.project</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

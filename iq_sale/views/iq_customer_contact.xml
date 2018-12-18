@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- IQ CUSTOMER CONTACT VIEWS -->
+
+        <record model="ir.ui.view" id="iq_customer_contact_form">
+            <field name="name">iq_customer_contact_form</field>
+            <field name="model">iq.customer.contact</field>
+            <field name="arch" type="xml">
+                <form name="Contacto">
+                    <group>
+                        <field name="name"/>
+                        <field name="job_position"/>
+                        <field name="mail"/>
+                        <field name="phone"/>
+                        <field name="iq_project_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="iq_customer_contact_tree">
+            <field name="name">iq_customer_contact_tree</field>
+            <field name="model">iq.customer.contact</field>
+            <field name="arch" type="xml">
+                <tree name="Contacto">
+                    <field name="name"/>
+                    <field name="job_position"/>
+                    <field name="mail"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="iq_customer_contact_action" model="ir.actions.act_window">
+            <field name="name">Contacto</field>
+            <field name="res_model">iq.customer.contact</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
