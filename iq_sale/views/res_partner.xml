@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- CUSTOMER PROYECTS -->
+
+        <record id="iq_project_res_partner_tree" model="ir.ui.view">
+            <field name="name">iq_project_res_partner_tree</field>
+            <field name="model">iq.customer.project</field>
+            <field name="arch" type="xml">
+                <tree name="Proyectos">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="iq_project_res_partner_request" model="ir.actions.act_window">
+            <field name="name">Proyectos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">iq.customer.project</field>
+            <field name="src_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('customer_id', '=', active_id)]</field>
+            <field name="context">{'default_customer_id': active_id}</field>
+            <field name="view_id" eval="iq_project_res_partner_tree"/>
+        </record>
+
+        <record id="iq_proyect_res_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+                <xpath expr="//div[@name='button_box']//button[1]" position="before">
+                    <button attrs="{'invisible': [('customer', '=', False)]}" name="iq_sale.iq_project_res_partner_request" type="action" class="oe_stat_button" icon="fa-list">
+                        <field string="Proyectos" name="iq_projects_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

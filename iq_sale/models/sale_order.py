@@ -38,6 +38,53 @@ class SaleOrder(models.Model):
         comodel_name='res.partner',
         domain="[('parent_id', '=', partner_id)]"
     )
+    quotation_mail_state = fields.Selection(
+        string='Estado correo',
+        size=1,
+        compute=lambda self: self._compute_quotation_mail_state(),
+        selection=[
+            ('O', 'SALIENTE'),
+            ('S', 'ENVIADO'),
+            ('R', 'RECIBIDO'),
+            ('E', 'ENTREGA FALLIDA'),
+            ('C', 'CANCELADO'),
+            ('P', 'PENDIENTE'),
+            ('Y', 'LISTO PARA ENVIAR'),
+            ('D', 'LEIDO')
+        ]
+    )
+
+    def _compute_quotation_mail_state(self):
+
+        MAIL_STATE_MAP = {
+            'outgoing': 'O',
+            'sent': 'S',
+            'received': 'R',
+            'exception': 'E',
+            'cancel': 'C',
+            'bounce': 'B',
+            'ready': 'Y',
+            'read': 'D'
+        }
+
+        for item in self:
+            item.quotation_mail_state = 'P'
+            so_mail = self.env['mail.mail'].search([('model', '=', 'sale.order'), ('res_id', '=', item.id)], limit=1)
+
+            if so_mail.id:
+                item.quotation_mail_state = MAIL_STATE_MAP[so_mail.state]
+            else:
+                so_comment_mail = self.env['mail.message'].search([
+                    ('model', '=', 'sale.order'), 
+                    ('res_id', '=', item.id),
+                    ('message_type', '=', 'comment'),
+                ], limit=1)
+
+                if so_comment_mail.id:
+
+                    if len(so_comment_mail.notification_ids) > 0:
+                        item.quotation_mail_state = MAIL_STATE_MAP[so_comment_mail.notification_ids[0].email_status]
+                        
 
     def quotation_page_index(self):
 
