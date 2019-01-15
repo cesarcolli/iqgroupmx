@@ -9,6 +9,7 @@
     ],
     "summary": "Customización de Contactos",
     "data": [
+        'security/ir.model.access.csv',
         'data/partner_sequence.xml',
         'views/partner_view.xml',
     ],
