@@ -20,6 +20,7 @@
 
     # always loaded
     'data': [
+        'security/ir.model.access.csv',
         'reports/iq_sale_order_main.xml',
         'reports/iq_sale_order_report.xml',
         'wizards/product_tech_file.xml',
