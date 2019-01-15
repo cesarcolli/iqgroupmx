@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_create","perm_write","perm_unlink"
+"iq_sale_iq_customer_project_base_user","iq_sale_iq_customer_project_base_user","model_iq_customer_project","base.group_user",1,1,1,1
+"iq_sale_iq_customer_contact_base_user","iq_sale_iq_customer_contact_base_user","model_iq_customer_contact","base.group_user",1,1,1,1
+"iq_sale_iq_operator_contact_base_user","iq_sale_iq_operator_contact_base_user","model_iq_operator_contact","base.group_user",1,1,1,1
