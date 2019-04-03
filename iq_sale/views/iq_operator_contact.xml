@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- IQ OPERATOR CONTACT VIEWS -->
+
+        <record model="ir.ui.view" id="iq_operator_contact_form">
+            <field name="name">iq_operator_contact_form</field>
+            <field name="model">iq.operator.contact</field>
+            <field name="arch" type="xml">
+                <form name="COntacto">
+                    <group>
+                        <field name="name"/>
+                        <field name="job_position"/>
+                        <field name="mail"/>
+                        <field name="phone"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="iq_operator_contact_tree">
+            <field name="name">iq_operator_contact_tree</field>
+            <field name="model">iq.operator.contact</field>
+            <field name="arch" type="xml">
+                <tree name="COntacto">
+                    <field name="name"/>
+                    <field name="job_position"/>
+                    <field name="mail"/>
+                    <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="iq_operator_contact_action" model="ir.actions.act_window">
+            <field name="name">COntacto</field>
+            <field name="res_model">iq.operator.contact</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

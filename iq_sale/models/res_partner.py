@@ -7,6 +7,20 @@ from odoo import fields, models, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    iq_project_ids = fields.One2many(
+        string='Proyectos',
+        comodel_name='iq.customer.project',
+        inverse_name='customer_id'
+    )
+    iq_projects_count = fields.Integer(
+        string='Escrituras',
+        compute='_iq_projects_count',
+    )
+
+    def _iq_projects_count(self):
+        for item in self:
+            item.iq_projects_count = item.iq_project_ids.search_count([('customer_id', '=', item.id)])
+
     def report_customer_address(self):
 
         return '%s%s%s\n%s%s%s%s%s%s%s' % (

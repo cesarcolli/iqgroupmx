@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <menuitem
+            id="crm.crm_menu_root"
+            name="CRM"
+            action="sale.action_quotations"/>
+
+    </data>
+</odoo>
